@@ -1,0 +1,117 @@
+@isTest
+private with sharing class Test_TemplateController 
+{
+	static testMethod void TemplateController()
+	{
+		Test.startTest();
+		
+		TemplateMaster__c objTemplate = new TemplateMaster__c(Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		
+		TemplateMaster__c objTemplate1 = new TemplateMaster__c(Name='TT2',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate1;
+		
+		TemplateMaster__c objTemplate2 = new TemplateMaster__c(Name='TT3',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate2;
+		
+		TemplateMaster__c objTemplate3 = new TemplateMaster__c(Name='TT4',TStatus__c=Label.TemplateStatus_Active,Version__c=5);
+		
+		TemplateMaster__c objTemplate4 = new TemplateMaster__c(Name='TT5',TStatus__c=Label.TemplateStatus_Active,Version__c=5);
+		
+		// Template Details Test Record
+		TemplateDetail__c newDetailRecord = new TemplateDetail__c (
+																	Get_Description__c='First Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='First Give Description',
+																	TemplateMaster__c=objTemplate.Id
+																	);
+																	
+		TemplateDetail__c newDetailRecord1 = new TemplateDetail__c (
+																	Get_Description__c='GGGFirst Get Description',
+																	Get_Points__c=5,
+																	Give_Description__c='GGGFirst Give Description',
+																	TemplateMaster__c=objTemplate1.Id
+																	);
+																	
+		TemplateDetail__c newDetailRecord2 = new TemplateDetail__c (
+																	Get_Description__c='ppGGGFirst Get Description',
+																	Get_Points__c=7,
+																	Give_Description__c='ppGGGFirst Give Description',
+																	TemplateMaster__c=objTemplate2.Id
+																	);
+		TemplateDetail__c newDetailRecord3 = new TemplateDetail__c (
+																	Get_Description__c='ppGGGFirst Get Description',
+																	Get_Points__c=8,
+																	Give_Description__c='ppGGGFirst Give Description',
+																	TemplateMaster__c=objTemplate2.Id
+																	);
+		TemplateDetail__c newDetailRecord4 = new TemplateDetail__c (
+																	Get_Description__c='ppGGGFirst Get Description',
+																	Get_Points__c=9,
+																	Give_Description__c='ppGGGFirst Give Description',
+																	TemplateMaster__c=objTemplate2.Id
+																	);															
+		
+		//TEst Case First	
+		
+		System.currentPagereference().getParameters().put('retURL','123456');
+		ApexPages.Standardcontroller stdCtrl = new Apexpages.Standardcontroller(objTemplate);
+		TemplateController objTemplateController = new TemplateController(stdCtrl);
+		
+		objTemplateController.remove(); //for else condition of remove method
+		
+		if(!objTemplateController.lstTempChilds.isEmpty()){
+			objTemplateController.lstTempChilds[0].objTemplateDetails = newDetailRecord;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController.lstTempChilds);
+			objTemplateController.Save();
+		}
+		objTemplateController.AddMore();
+		objTemplateController.Save();
+		
+		//TEst Case Second
+	
+		
+																			
+		//System.currentPagereference().getParameters().put('retURL','123456');
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate1);
+		TemplateController objTemplateController1 = new TemplateController(stdCtrl1);
+		if(!objTemplateController1.lstTempChilds.isEmpty()){
+			objTemplateController1.lstTempChilds[0].objTemplateDetails = newDetailRecord1;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController1.lstTempChilds);
+			objTemplateController1.Save();
+		}
+		objTemplateController1.AddMore();
+		objTemplateController1.Remove();
+	
+		//Checking for Duplication records insertion	
+		
+		
+																			
+		//System.currentPagereference().getParameters().put('retURL','123456');
+		ApexPages.Standardcontroller stdCtrl2 = new Apexpages.Standardcontroller(objTemplate3);
+		TemplateController objTemplateController2 = new TemplateController(stdCtrl2);
+		if(!objTemplateController2.lstTempChilds.isEmpty()){
+			objTemplateController2.lstTempChilds[0].objTemplateDetails = newDetailRecord2;
+			objTemplateController2.addMore();
+			objTemplateController2.lstTempChilds[1].objTemplateDetails = newDetailRecord2;
+			objTemplateController2.checkDuplicateRecordFunction(objTemplateController2.lstTempChilds);
+			objTemplateController2.Save();
+		}
+		
+		//for duplicate Get and Give discription
+		ApexPages.Standardcontroller stdCtrl3 = new Apexpages.Standardcontroller(objTemplate4);
+		TemplateController objTemplateController3 = new TemplateController(stdCtrl3);
+		if(!objTemplateController3.lstTempChilds.isEmpty()){
+			objTemplateController3.lstTempChilds[0].objTemplateDetails = newDetailRecord3;
+			objTemplateController3.addMore();
+			objTemplateController3.lstTempChilds[1].objTemplateDetails = newDetailRecord4;
+			System.debug('====lstTemplateChilds===='+objTemplateController3.lstTempChilds);
+			objTemplateController3.checkDuplicateRecordFunction(objTemplateController3.lstTempChilds);
+			objTemplateController3.Save();
+		}
+
+
+
+		Test.stopTest();
+	}
+	
+}

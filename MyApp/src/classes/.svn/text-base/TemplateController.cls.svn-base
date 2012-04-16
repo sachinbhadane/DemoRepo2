@@ -1,0 +1,139 @@
+public with sharing class TemplateController
+{
+	//Variables
+	String returnUrl;
+
+	//Properties
+	public Boolean deleteButtonFlag{set;get;}
+	public TemplateMaster__c objTemplate{set;get;}
+
+	//List
+	public List<TemplateDetail__c> lstTempDetDelete =  new List<TemplateDetail__c>();
+	public List<TemplateChilds> lstTempChilds{set;get;}
+
+	//Constructor
+	public TemplateController(ApexPages.StandardController stdController)
+	{
+		returnUrl = ApexPages.currentPage().getParameters().get('retURL');
+		this.objTemplate = (TemplateMaster__c)stdController.getRecord();
+		init();
+	} 
+	
+	//Save Functionality
+	public Pagereference save()
+	{
+		Pagereference pgRef = null;
+		//Checking if there is any blank row entered by the user or not
+		for(TemplateChilds objTemp : lstTempChilds)
+		{
+			if((objTemp.objTemplateDetails.Get_Points__c == null)|| (objTemp.objTemplateDetails.Get_Description__c == null)||(objTemp.objTemplateDetails.Get_Description__c == '') || (objTemp.objTemplateDetails.Give_Description__c == null)||(objTemp.objTemplateDetails.Give_Description__c == '') )
+			{
+				Utitlity.addError(Label.Error_Message_for_Blank_Row);
+				return null;
+			}
+		}
+		//Checking if there is already a Template of same name in the database
+		if([ select count() from TemplateMaster__c where Name =:objTemplate.Name ]==0)
+		{
+			boolean checkDuplicateFlag = checkDuplicateRecordFunction(lstTempChilds);
+			if(checkDuplicateFlag == false)
+			{
+				objTemplate.Version__c =1;
+				Database.Saveresult objSaveResult = Database.insert(objTemplate);
+				if(objSaveResult.isSuccess())
+				{
+					List<TemplateDetail__c> lstRecordsToInsert = new List<TemplateDetail__c>();
+					TemplateDetail__c tempRecord = new TemplateDetail__c();
+					if(lstTempChilds !=null && lstTempChilds.size() > 0)
+					{
+						for(TemplateChilds objTempChilds : lstTempChilds)
+						{
+							TemplateDetail__c objTemplateItem = objTempChilds.objTemplateDetails;
+							objTemplateItem.TemplateMaster__c =objSaveResult.getId(); 
+							lstRecordsToInsert.add(objTempChilds.objTemplateDetails);
+						}
+					}
+					List <Database.Upsertresult> lstUpResult = Database.upsert(lstRecordsToInsert);
+				}
+				if(returnUrl != null)
+					pgRef =  new Pagereference(returnUrl);
+				return pgRef;
+			}
+			else
+			{
+				Utitlity.addError(Label.Error_Message_for_Duplicate_Records); 
+				return null;
+			}
+		}
+		else
+		{
+			Utitlity.addError(Label.Error_Message_for_Duplicate_TemplateName); 
+			return null;
+		}
+	}
+	//Checking for duplicate records in DetailTemplate
+	public boolean checkDuplicateRecordFunction (List<TemplateChilds> recordList)
+	{
+		TemplateDetail__c tempRecord = new TemplateDetail__c();
+		boolean bDuplicate = false;
+		integer tempCounter=0;
+		for(TemplateChilds ptrToList : recordList )
+		{
+			tempRecord=ptrToList.objTemplateDetails;
+			tempCounter=0;
+			for(TemplateChilds ptrToSameList : recordList )
+			{
+				if((tempRecord.Get_Points__c==ptrToSameList.objTemplateDetails.Get_Points__c) && (tempRecord.Get_Description__c==ptrToSameList.objTemplateDetails.Get_Description__c) && (tempRecord.Give_Description__c==ptrToSameList.objTemplateDetails.Give_Description__c) )
+				{
+					tempCounter++;
+				}
+				else if((tempRecord.Get_Points__c != ptrToSameList.objTemplateDetails.Get_Points__c) && (tempRecord.Get_Description__c==ptrToSameList.objTemplateDetails.Get_Description__c) && (tempRecord.Give_Description__c==ptrToSameList.objTemplateDetails.Give_Description__c) )
+				{
+					tempCounter++;
+				}
+			}
+			if(tempCounter > 1)
+			{
+				UtitLity.addError(Label.Error_Message_for_Duplicate_Records);
+				bDuplicate =  true;
+			}
+		}
+		return bDuplicate;
+	}
+
+	public void init()  //init method for declaration
+	{
+		lstTempChilds = new List<TemplateChilds>();
+	 	lstTempChilds.add(new TemplateChilds(new TemplateDetail__c(TemplateMaster__c = objTemplate.Id),1)); 
+	}
+	public Pagereference addMore()   //method to add new row 
+	{
+		lstTempChilds.add(new TemplateChilds(new TemplateDetail__c(TemplateMaster__c = objTemplate.Id),lstTempChilds.size()+1));
+		return null;
+	}
+	public void remove()   	//method to remove last row
+	{   
+		if(lstTempChilds != null && lstTempChilds.size() > 1)
+		{
+			TemplateChilds objTemplateChilds = lstTempChilds.get(lstTempChilds.size()-1);
+			lstTempChilds.remove(lstTempChilds.size()-1);
+		}
+		else 
+		{
+			ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL, Label.Error_Message_for_Blank_Template_Detail);
+			ApexPages.addMessage(myMsg);
+		}
+	}
+	//Wrapper Class
+	public class TemplateChilds
+	{
+		public Integer iIndex {get;set;}
+        public TemplateDetail__c objTemplateDetails {get;set;}
+      
+		public TemplateChilds(TemplateDetail__c objTemplateDetails,Integer iIndex)
+		{
+			this.iIndex = iIndex;
+			this.objTemplateDetails = objTemplateDetails;
+		}
+	}
+}

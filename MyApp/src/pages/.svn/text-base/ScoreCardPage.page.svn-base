@@ -1,0 +1,1045 @@
+<apex:page standardcontroller="Scorecard__c">
+<apex:form >
+<apex:pageBlock title="Score Card" id="thePageBlock" mode="edit">
+<apex:pageMessages />
+
+<apex:pageBlockButtons >
+<apex:commandButton value="Save" action="{!save}"/>
+<apex:commandButton immediate="true" value="Cancel" action="{!cancel}"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection title="General Information" columns="1" >
+<apex:pageBlockSectionItem dataStyle="width:20px;">
+<apex:outputLabel value="Score Card name" for="scorecard_name"/>
+<apex:inputField value="{!Scorecard__c.Name}" id="scorecard_name" required="true"/> 
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem dataStyle="width:20px;">
+<apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Opportunity__c.Label}"/>
+<apex:inputField value="{!Scorecard__c.Opportunity__c}" id="scorecard_name" required="true"/> 
+</apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+
+<script language="javascript">
+
+function sumleft()
+{
+var total = 0;
+if(document.getElementById('{!$Component.topblock.q11sum.q11sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q11sum.q11sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q21sum.q21sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q21sum.q21sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q31sum.q31sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q31sum.q31sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q41sum.q41sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q41sum.q41sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q51sum.q51sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q51sum.q51sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q61sum.q61sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q61sum.q61sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q71sum.q71sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q71sum.q71sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q81sum.q81sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q81sum.q81sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q91sum.q91sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q91sum.q91sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q101sum.q101sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q101sum.q101sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q111sum.q111sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q111sum.q111sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q121sum.q121sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q121sum.q121sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q131sum.q131sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q131sum.q131sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q141sum.q141sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q141sum.q141sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q151sum.q151sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q151sum.q151sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q161sum.q161sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q161sum.q161sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q171sum.q171sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q171sum.q171sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q181sum.q181sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q181sum.q181sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q191sum.q191sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q191sum.q191sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q201sum.q201sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q201sum.q201sumfield}').value);
+    
+document.getElementById('{!$Component.totalblock.sumleft.sumleftfield}').value  = total;
+
+}
+
+function sumright()
+{
+}
+
+function switchboxesleft(id, numid, sumid, value)
+{
+    if(document.getElementById(id).checked == true) {
+        if(document.getElementById(numid).value == "")
+             document.getElementById(numid).value = 1;
+        
+        document.getElementById(sumid).value = parseInt(value) * parseInt(document.getElementById(numid).value) ;
+    }
+    else {
+        document.getElementById(sumid).value = "";
+    }
+    sumleft();
+}
+
+
+
+function sumright()
+{
+var total = 0;
+if(document.getElementById('{!$Component.topblock.q12sum.q12sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q12sum.q12sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q22sum.q22sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q22sum.q22sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q32sum.q32sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q32sum.q32sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q42sum.q42sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q42sum.q42sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q52sum.q52sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q52sum.q52sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q62sum.q62sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q62sum.q62sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q72sum.q72sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q72sum.q72sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q82sum.q82sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q82sum.q82sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q92sum.q92sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q92sum.q92sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q102sum.q102sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q102sum.q102sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q112sum.q112sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q112sum.q112sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q122sum.q122sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q122sum.q122sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q132sum.q132sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q132sum.q132sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q142sum.q142sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q142sum.q142sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q152sum.q152sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q152sum.q152sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q162sum.q162sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q162sum.q162sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q172sum.q172sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q172sum.q172sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q182sum.q182sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q182sum.q182sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q192sum.q192sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q192sum.q192sumfield}').value);
+if(document.getElementById('{!$Component.topblock.q202sum.q202sumfield}').value != "")
+    total = total + parseInt(document.getElementById('{!$Component.topblock.q202sum.q202sumfield}').value);
+    
+document.getElementById('{!$Component.totalblock.sumright.sumrightfield}').value  = total;
+
+}
+function switchboxesright1(id, asked, denied, sumid, value)
+{
+    if(document.getElementById(id).checked == true) {        
+        document.getElementById(sumid).value = value;
+        document.getElementById(asked).checked = false;
+        document.getElementById(denied).checked = false;
+    }
+    else {
+        document.getElementById(sumid).value = "";
+    }
+    sumright();
+}
+
+function switchboxesright2(id, asked, denied, sumid, value)
+{
+    if(document.getElementById(asked).checked == true) {
+        document.getElementById(sumid).value = "";
+        document.getElementById(id).checked = false;
+        document.getElementById(denied).checked = false;
+    }
+    sumright();
+}
+
+function switchboxesright3(id, asked, denied, sumid, value)
+{
+    if(document.getElementById(denied).checked == true) {
+        document.getElementById(sumid).value = "";
+        document.getElementById(id).checked = false;
+        document.getElementById(asked).checked = false;
+    }
+    sumright();
+}
+
+</script>
+
+<apex:pageBlockSection title="Scoring" columns="11" id="topblock" >
+    <apex:pageBlockSectionItem dataStyle="width:15px;"><b>Pts</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;"><b></b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;background-color:green;"><b>Gave</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:35px;background-color:gray;"><b># of Times</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;"><b>Total</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;"><b>Pts</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;"><b></b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;background-color:yellow;"><b>Asked Not Got</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;background-color:red;"><b>Asked Denied</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;background-color:green;"><b>Got</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:15px;"><b>Total</b></apex:pageBlockSectionItem>
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >1</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Collateral_Info_White_Paper__c.Label}" for="q11"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd11sect">
+        <apex:inputField style="width:20px;" value="{!Scorecard__c.Collateral_Info_White_Paper__c}" id="q11" onclick="switchboxesleft(this.id, '{!$Component.q11count.q11countfield}', '{!$Component.q11sum.q11sumfield}', '1')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40px;" id="q11count">
+        <apex:inputField id="q11countfield" style="width:20px;" value="{!Scorecard__c.Num_Collateral_Info_White_Paper__c}" onkeyup="switchboxesleft('{!$Component.qd11sect.q11}', '{!$Component.q11count.q11countfield}', '{!$Component.q11sum.q11sumfield}', '1')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q11sum">
+        <apex:inputField onkeypress="alert('You cannot edit this field');return false;" id="q11sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Collateral_Info_White_Paper__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >1</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel style="width:20px;" value="{!$ObjectType.Scorecard__c.fields.Qualification_Meeting_Accept_Invite__c.Label}" for="q12"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40px;" id="q12asked">
+        <apex:inputField style="width:20px;" id="q12askedfield" value="{!Scorecard__c.Got_Qualification_Meeting_Accept_Inv__c}" onclick="switchboxesright2('{!$Component.q12.q12field}','{!$Component.q12asked.q12askedfield}','{!$Component.q12denied.q12deniedfield}', '{!$Component.q12sum.q12sumfield}',1)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40px;" id="q12denied">
+        <apex:inputField style="width:20px;" id="q12deniedfield" value="{!Scorecard__c.Denied_Qualification_Meeting_Accept_Inv__c}" onclick="switchboxesright3('{!$Component.q12.q12field}','{!$Component.q12asked.q12askedfield}','{!$Component.q12denied.q12deniedfield}', '{!$Component.q12sum.q12sumfield}',1)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q12">
+        <apex:inputField style="width:20px;" id="q12field" value="{!Scorecard__c.Qualification_Meeting_Accept_Invite__c}" onclick="switchboxesright1('{!$Component.q12.q12field}','{!$Component.q12asked.q12askedfield}','{!$Component.q12denied.q12deniedfield}', '{!$Component.q12sum.q12sumfield}',1)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q12sum">
+        <apex:inputField onkeypress="alert('You cannot edit this field');return false;" id="q12sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Qualification_Meeting_Accept_Inv__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >2</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Names_of_clients_we_do_business_with__c.Label}" for="q21"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd21sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Names_of_clients_we_do_business_with__c}" id="q21" onclick="switchboxesleft(this.id,'{!$Component.q21count.q21countfield}', '{!$Component.q21sum.q21sumfield}', '2')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q21count">
+        <apex:inputField style="width:20px;" value="{!Scorecard__c.Num_Names_of_clients_we_do_business_with__c}" id="q21countfield" onkeyup="switchboxesleft('{!$Component.qd21sect.q21}', '{!$Component.q21count.q21countfield}', '{!$Component.q21sum.q21sumfield}', '2')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q21sum">
+        <apex:inputField onkeypress="alert('You cannot edit this field');return false;" id="q21sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Names_of_clients_we_do_business_with__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >2</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Sign_up_for_Kensei_e_mail_list__c.Label}" for="q22"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q22asked">
+        <apex:inputField style="width:20px;"  id="q22askedfield" value="{!Scorecard__c.Got_Sign_up_for_Kensei_e_mail_list__c}" onclick="switchboxesright2('{!$Component.q22.q22field}','{!$Component.q22asked.q22askedfield}','{!$Component.q22denied.q22deniedfield}', '{!$Component.q22sum.q22sumfield}',2)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q22denied">
+        <apex:inputField style="width:20px;"  id="q22deniedfield" value="{!Scorecard__c.Denied_Sign_up_for_Kensei_e_mail_list__c}" onclick="switchboxesright3('{!$Component.q22.q22field}','{!$Component.q22asked.q22askedfield}','{!$Component.q22denied.q22deniedfield}', '{!$Component.q22sum.q22sumfield}',2)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q22">
+        <apex:inputField style="width:20px;"  id="q22field" value="{!Scorecard__c.Sign_up_for_Kensei_e_mail_list__c}"   onclick="switchboxesright1('{!$Component.q22.q22field}','{!$Component.q22asked.q22askedfield}','{!$Component.q22denied.q22deniedfield}', '{!$Component.q22sum.q22sumfield}',2)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q22sum">
+        <apex:inputField onkeypress="alert('You cannot edit this field');return false;" id="q22sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Sign_up_for_Kensei_e_mail_list__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+    
+    <!-- -->
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >3</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Competitive_Matrix_Differentiators__c.Label}" for="q31"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd31sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Competitive_Matrix_Differentiators__c}" id="q31" onclick="switchboxesleft(this.id, '{!$Component.q31count.q31countfield}', '{!$Component.q31sum.q31sumfield}', '3')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q31count">
+        <apex:inputField id="q31countfield" style="width:20px;" value="{!Scorecard__c.Num_Competitive_Matrix_Differentiators__c}" onkeyup="switchboxesleft('{!$Component.qd31sect.q31}', '{!$Component.q31count.q31countfield}', '{!$Component.q31sum.q31sumfield}', '3')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q31sum">
+        <apex:inputField id="q31sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Competitive_Matrix_Differentiators__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >3</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Agenda_Feedback_3rd_pt_in_3_pt_agenda__c.Label}" for="q32"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q32asked">
+        <apex:inputField style="width:20px;"  id="q32askedfield" value="{!Scorecard__c.Got_Agenda_Feedback_3rd_pt_in_3_pt__c}" onclick="switchboxesright2('{!$Component.q32.q32field}','{!$Component.q32asked.q32askedfield}','{!$Component.q32denied.q32deniedfield}', '{!$Component.q32sum.q32sumfield}',3)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q32denied">
+        <apex:inputField style="width:20px;"  id="q32deniedfield" value="{!Scorecard__c.Denied_Agenda_Feedback_3rd_pt_in_3_pt__c}" onclick="switchboxesright3('{!$Component.q32.q32field}','{!$Component.q32asked.q32askedfield}','{!$Component.q32denied.q32deniedfield}', '{!$Component.q32sum.q32sumfield}',3)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q32">
+        <apex:inputField style="width:20px;"  id="q32field" value="{!Scorecard__c.Agenda_Feedback_3rd_pt_in_3_pt_agenda__c}" onclick="switchboxesright1('{!$Component.q32.q32field}','{!$Component.q32asked.q32askedfield}','{!$Component.q32denied.q32deniedfield}', '{!$Component.q32sum.q32sumfield}',3)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q32sum">
+        <apex:inputField id="q32sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Agenda_Feedback_3rd_pt_in_3_pt__c}"/>     
+    </apex:pageBlockSectionItem>    
+    <!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >4</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Pricing_General__c.Label}" for="q41"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd41sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Pricing_General__c}" id="q41" onclick="switchboxesleft(this.id, '{!$Component.q41count.q41countfield}', '{!$Component.q41sum.q41sumfield}', '4')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q41count" >
+        <apex:inputField id="q41countfield" style="width:20px;" value="{!Scorecard__c.Num_Pricing_General__c}" onkeyup="switchboxesleft('{!$Component.qd41sect.q41}', '{!$Component.q41count.q41countfield}', '{!$Component.q41sum.q41sumfield}', '4')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q41sum">
+        <apex:inputField id="q41sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Pricing_General__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >4</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Sales_team_structure_and_s__c.Label}" for="q42"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q42asked">
+        <apex:inputField style="width:20px;"  id="q42askedfield" value="{!Scorecard__c.Got_Sales_team_structure_and_s__c}" onclick="switchboxesright2('{!$Component.q42.q42field}','{!$Component.q42asked.q42askedfield}','{!$Component.q42denied.q42deniedfield}', '{!$Component.q42sum.q42sumfield}',4)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q42denied">
+        <apex:inputField style="width:20px;"  id="q42deniedfield" value="{!Scorecard__c.Denied_Sales_team_structure_and_s__c}" onclick="switchboxesright3('{!$Component.q42.q42field}','{!$Component.q42asked.q42askedfield}','{!$Component.q42denied.q42deniedfield}', '{!$Component.q42sum.q42sumfield}',4)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q42">
+        <apex:inputField style="width:20px;"  id="q42field" value="{!Scorecard__c.Sales_team_structure_and_s__c}" onclick="switchboxesright1('{!$Component.q42.q42field}','{!$Component.q42asked.q42askedfield}','{!$Component.q42denied.q42deniedfield}', '{!$Component.q42sum.q42sumfield}',4)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q42sum">
+        <apex:inputField id="q42sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Sales_team_structure_and_s__c}"/>     
+    </apex:pageBlockSectionItem>    
+    <!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >5</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Web_Presentation__c.Label}" for="q51"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd51sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Web_Presentation__c}" id="q51" onclick="switchboxesleft(this.id, '{!$Component.q51count.q51countfield}', '{!$Component.q51sum.q51sumfield}', '5')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q51count" >
+        <apex:inputField id="q51countfield" style="width:20px;" value="{!Scorecard__c.Num_Web_Presentation__c}" onkeyup="switchboxesleft('{!$Component.qd51sect.q51}', '{!$Component.q51count.q51countfield}', '{!$Component.q51sum.q51sumfield}', '5')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q51sum">
+        <apex:inputField id="q51sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Web_Presentation__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >5</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Competition_Current_and_Historic__c.Label}" for="q52"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q52asked">
+        <apex:inputField style="width:20px;"  id="q52askedfield" value="{!Scorecard__c.Got_Competition_Current_and_Historic__c}" onclick="switchboxesright2('{!$Component.q52.q52field}','{!$Component.q52asked.q52askedfield}','{!$Component.q52denied.q52deniedfield}', '{!$Component.q52sum.q52sumfield}',5)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q52denied">
+        <apex:inputField style="width:20px;"  id="q52deniedfield" value="{!Scorecard__c.Denied_Competition_Current_and_Historic__c}" onclick="switchboxesright3('{!$Component.q52.q52field}','{!$Component.q52asked.q52askedfield}','{!$Component.q52denied.q52deniedfield}', '{!$Component.q52sum.q52sumfield}',5)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q52" >
+        <apex:inputField style="width:20px;"  id="q52field" value="{!Scorecard__c.Competition_Current_and_Historic__c}" onclick="switchboxesright1('{!$Component.q52.q52field}','{!$Component.q52asked.q52askedfield}','{!$Component.q52denied.q52deniedfield}', '{!$Component.q52sum.q52sumfield}',5)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q52sum">
+        <apex:inputField id="q52sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Competition_Current_and_Historic__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >6</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Meeting_Non_Decision_Makers__c.Label}" for="q61"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd61sect" >
+        <apex:inputField id="q61" style="width:20px;"  value="{!Scorecard__c.Meeting_Non_Decision_Makers__c}"  onclick="switchboxesleft(this.id, '{!$Component.q61count.q61countfield}', '{!$Component.q61sum.q61sumfield}', '6')" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q61count">
+        <apex:inputField id="q61countfield" style="width:20px;" value="{!Scorecard__c.Num_Meeting_Non_Decision_Makers__c}" onkeyup="switchboxesleft('{!$Component.qd61sect.q61}', '{!$Component.q61count.q61countfield}', '{!$Component.q61sum.q61sumfield}', '6')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q61sum">
+        <apex:inputField id="q61sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Meeting_Non_Decision_Makers__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >6</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.DM_Timeline_Process__c.Label}" for="q62"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q62asked">
+        <apex:inputField style="width:20px;"  id="q62askedfield" value="{!Scorecard__c.Got_DM_Timeline_Process__c}" onclick="switchboxesright2('{!$Component.q62.q62field}','{!$Component.q62asked.q62askedfield}','{!$Component.q62denied.q62deniedfield}', '{!$Component.q62sum.q62sumfield}',6)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q62denied">
+        <apex:inputField style="width:20px;"  id="q62deniedfield" value="{!Scorecard__c.Denied_DM_Timeline_Process__c}" onclick="switchboxesright3('{!$Component.q62.q62field}','{!$Component.q62asked.q62askedfield}','{!$Component.q62denied.q62deniedfield}', '{!$Component.q62sum.q62sumfield}',6)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q62">
+        <apex:inputField style="width:20px;"  id="q62field" value="{!Scorecard__c.DM_Timeline_Process__c}" onclick="switchboxesright1('{!$Component.q62.q62field}','{!$Component.q62asked.q62askedfield}','{!$Component.q62denied.q62deniedfield}', '{!$Component.q62sum.q62sumfield}',6)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q62sum">
+        <apex:inputField id="q62sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_DM_Timeline_Process__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+<!-- -->    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >7</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Brief_Training_of_techniques_1_hr__c.Label}" for="q71"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd71sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Brief_Training_of_techniques_1_hr__c}" id="q71" onclick="switchboxesleft(this.id, '{!$Component.q71count.q71countfield}', '{!$Component.q71sum.q71sumfield}', '7')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q71count" >
+        <apex:inputField id="q71countfield" style="width:20px;" value="{!Scorecard__c.Num_Brief_Training_of_techniques_1_hr__c}" onkeyup="switchboxesleft('{!$Component.qd71sect.q71}', '{!$Component.q71count.q71countfield}', '{!$Component.q71sum.q71sumfield}', '7')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q71sum">
+        <apex:inputField id="q71sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Brief_Training_of_techniques_1_hr__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >7</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Success_criteria_and_committed_next_step__c.Label}" for="q72"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q72asked">
+        <apex:inputField style="width:20px;"  id="q72askedfield" value="{!Scorecard__c.Got_Success_criteria_and_committed__c}" onclick="switchboxesright2('{!$Component.q72.q72field}','{!$Component.q72asked.q72askedfield}','{!$Component.q72denied.q72deniedfield}', '{!$Component.q72sum.q72sumfield}',7)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q72denied">
+        <apex:inputField style="width:20px;" id="q72deniedfield" value="{!Scorecard__c.Denied_Success_criteria_and_committed__c}" onclick="switchboxesright3('{!$Component.q72.q72field}','{!$Component.q72asked.q72askedfield}','{!$Component.q72denied.q72deniedfield}', '{!$Component.q72sum.q72sumfield}',7)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q72">
+        <apex:inputField style="width:20px;"  id="q72field" value="{!Scorecard__c.Success_criteria_and_committed_next_step__c}" onclick="switchboxesright1('{!$Component.q72.q72field}','{!$Component.q72asked.q72askedfield}','{!$Component.q72denied.q72deniedfield}', '{!$Component.q72sum.q72sumfield}',7)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q72sum">
+        <apex:inputField id="q72sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Success_criteria_and_committed__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+<!-- -->    
+    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >8</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Proposal_with_Plan_Outline__c.Label}" for="q81"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd81sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Proposal_with_Plan_Outline__c}" id="q81" onclick="switchboxesleft(this.id,'{!$Component.q81count.q81countfield}',  '{!$Component.q81sum.q81sumfield}', '8')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q81count" >
+        <apex:inputField id="q81countfield" style="width:20px;" value="{!Scorecard__c.Num_Proposal_with_Plan_Outline__c}" onkeyup="switchboxesleft('{!$Component.qd81sect.q81}', '{!$Component.q81count.q81countfield}', '{!$Component.q81sum.q81sumfield}', '8')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q81sum">
+        <apex:inputField id="q81sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Proposal_with_Plan_Outline__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >8</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Meeting_with_DMs__c.Label}" for="q82"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q82asked">
+        <apex:inputField style="width:20px;"  id="q82askedfield" value="{!Scorecard__c.Got_Meeting_with_DMs__c}" onclick="switchboxesright2('{!$Component.q82.q82field}','{!$Component.q82asked.q82askedfield}','{!$Component.q82denied.q82deniedfield}', '{!$Component.q82sum.q82sumfield}',8)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q82denied">
+        <apex:inputField style="width:20px;"  id="q82deniedfield" value="{!Scorecard__c.Denied_Meeting_with_DMs__c}" onclick="switchboxesright3('{!$Component.q82.q82field}','{!$Component.q82asked.q82askedfield}','{!$Component.q82denied.q82deniedfield}', '{!$Component.q82sum.q82sumfield}',8)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q82">
+        <apex:inputField style="width:20px;"  id="q82field" value="{!Scorecard__c.Meeting_with_DMs__c}" onclick="switchboxesright1('{!$Component.q82.q82field}','{!$Component.q82asked.q82askedfield}','{!$Component.q82denied.q82deniedfield}', '{!$Component.q82sum.q82sumfield}',8)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q82sum">
+        <apex:inputField id="q82sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Meeting_with_DMs__c}"/>     
+    </apex:pageBlockSectionItem>    
+
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >9</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Discount_Level1__c.Label}" for="q91"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd91sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Discount_Level1__c}" id="q91" onclick="switchboxesleft(this.id,'{!$Component.q91count.q91countfield}',  '{!$Component.q91sum.q91sumfield}', '9')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q91count" >
+        <apex:inputField id="q91countfield" style="width:20px;" value="{!Scorecard__c.Num_Discount_Level1__c}" onkeyup="switchboxesleft('{!$Component.qd91sect.q91}', '{!$Component.q91count.q91countfield}', '{!$Component.q91sum.q91sumfield}', '9')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q91sum">
+        <apex:inputField id="q91sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Discount_Level1__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >9</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Budget__c.Label}" for="q92"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q92asked">
+        <apex:inputField style="width:20px;"  id="q92askedfield" value="{!Scorecard__c.Got_Budget__c}" onclick="switchboxesright2('{!$Component.q92.q92field}','{!$Component.q92asked.q92askedfield}','{!$Component.q92denied.q92deniedfield}', '{!$Component.q92sum.q92sumfield}',9)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q92denied">
+        <apex:inputField style="width:20px;"  id="q92deniedfield" value="{!Scorecard__c.Denied_Budget__c}" onclick="switchboxesright3('{!$Component.q92.q92field}','{!$Component.q92asked.q92askedfield}','{!$Component.q92denied.q92deniedfield}', '{!$Component.q92sum.q92sumfield}',9)"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q92">
+        <apex:inputField style="width:20px;" id="q92field" value="{!Scorecard__c.Budget__c}" onclick="switchboxesright1('{!$Component.q92.q92field}','{!$Component.q92asked.q92askedfield}','{!$Component.q92denied.q92deniedfield}', '{!$Component.q92sum.q92sumfield}',9)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q92sum">
+        <apex:inputField id="q92sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Budget__c}"/>     
+    </apex:pageBlockSectionItem>        
+
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >10</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Better_Terms_Net30__c.Label}" for="q101"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd101sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Better_Terms_Net30__c}" id="q101" onclick="switchboxesleft(this.id,'{!$Component.q101count.q101countfield}',  '{!$Component.q101sum.q101sumfield}', '10')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q101count" >
+        <apex:inputField id="q101countfield" style="width:20px;" value="{!Scorecard__c.Num_Better_Terms_Net30__c}" onkeyup="switchboxesleft('{!$Component.qd101sect.q101}', '{!$Component.q101count.q101countfield}', '{!$Component.q101sum.q101sumfield}', '10')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q101sum">
+        <apex:inputField id="q101sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Better_Terms_Net30__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >10</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Org_Chart__c.Label}" for="q102"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q102asked">
+        <apex:inputField style="width:20px;"  id="q102askedfield" value="{!Scorecard__c.Got_Org_Chart__c}" onclick="switchboxesright2('{!$Component.q102.q102field}','{!$Component.q102asked.q102askedfield}','{!$Component.q102denied.q102deniedfield}', '{!$Component.q102sum.q102sumfield}',10)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q102denied">
+        <apex:inputField style="width:20px;"  id="q102deniedfield" value="{!Scorecard__c.Denied_Org_Chart__c}" onclick="switchboxesright3('{!$Component.q102.q102field}','{!$Component.q102asked.q102askedfield}','{!$Component.q102denied.q102deniedfield}', '{!$Component.q102sum.q102sumfield}',10)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q102">
+        <apex:inputField style="width:20px;"  id="q102field" value="{!Scorecard__c.Org_Chart__c}" onclick="switchboxesright1('{!$Component.q102.q102field}','{!$Component.q102asked.q102askedfield}','{!$Component.q102denied.q102deniedfield}', '{!$Component.q102sum.q102sumfield}',10)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q102sum">
+        <apex:inputField id="q102sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Org_Chart__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >11</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Customized_Training__c.Label}" for="q111"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd111sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Customized_Training__c}" id="q111" onclick="switchboxesleft(this.id,'{!$Component.q111count.q111countfield}',  '{!$Component.q111sum.q111sumfield}', '11')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q111count" >
+        <apex:inputField id="q111countfield" style="width:20px;" value="{!Scorecard__c.Num_Customized_Training__c}" onkeyup="switchboxesleft('{!$Component.qd111sect.q111}', '{!$Component.q111count.q111countfield}', '{!$Component.q111sum.q111sumfield}', '11')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q111sum">
+        <apex:inputField id="q111sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Customized_Training__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >11</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Champion__c.Label}" for="q112"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q112asked">
+        <apex:inputField style="width:20px;"  id="q112askedfield" value="{!Scorecard__c.Got_Champion__c}" onclick="switchboxesright2('{!$Component.q112.q112field}','{!$Component.q112asked.q112askedfield}','{!$Component.q112denied.q112deniedfield}', '{!$Component.q112sum.q112sumfield}',11)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q112denied">
+        <apex:inputField style="width:20px;"  id="q112deniedfield" value="{!Scorecard__c.Denied_Champion__c}" onclick="switchboxesright3('{!$Component.q112.q112field}','{!$Component.q112asked.q112askedfield}','{!$Component.q112denied.q112deniedfield}', '{!$Component.q112sum.q112sumfield}',11)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q112">
+        <apex:inputField style="width:20px;" id="q112field" value="{!Scorecard__c.Champion__c}" onclick="switchboxesright1('{!$Component.q112.q112field}','{!$Component.q112asked.q112askedfield}','{!$Component.q112denied.q112deniedfield}', '{!$Component.q112sum.q112sumfield}',11)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q112sum">
+        <apex:inputField id="q112sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Champion__c}"/>     
+    </apex:pageBlockSectionItem>        
+    
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >12</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Discount_Level2__c.Label}" for="q121"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd121sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Discount_Level2__c}" id="q121" onclick="switchboxesleft(this.id,'{!$Component.q121count.q121countfield}',  '{!$Component.q121sum.q121sumfield}', '12')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q121count" >
+        <apex:inputField id="q121countfield"  style="width:20px;" value="{!Scorecard__c.Num_Discount_Level2__c}" onkeyup="switchboxesleft('{!$Component.qd121sect.q121}', '{!$Component.q121count.q121countfield}', '{!$Component.q121sum.q121sumfield}', '12')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q121sum">
+        <apex:inputField id="q121sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Discount_Level2__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >12</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Competitive_Proposals__c.Label}" for="q122"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q122asked">
+        <apex:inputField style="width:20px;"  id="q122askedfield" value="{!Scorecard__c.Got_Competitive_Proposals__c}" onclick="switchboxesright2('{!$Component.q122.q122field}','{!$Component.q122asked.q122askedfield}','{!$Component.q122denied.q122deniedfield}', '{!$Component.q122sum.q122sumfield}',12)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q122denied">
+        <apex:inputField style="width:20px;"  id="q122deniedfield" value="{!Scorecard__c.Denied_Competitive_Proposals__c}" onclick="switchboxesright3('{!$Component.q122.q122field}','{!$Component.q122asked.q122askedfield}','{!$Component.q122denied.q122deniedfield}', '{!$Component.q122sum.q122sumfield}',12)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q122">
+        <apex:inputField style="width:20px;"  id="q122field" value="{!Scorecard__c.Competitive_Proposals__c}" onclick="switchboxesright1('{!$Component.q122.q122field}','{!$Component.q122asked.q122askedfield}','{!$Component.q122denied.q122deniedfield}', '{!$Component.q122sum.q122sumfield}',12)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q122sum">
+        <apex:inputField id="q122sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Competitive_Proposals__c}"/>     
+    </apex:pageBlockSectionItem>        
+    
+<!-- -->    
+
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >13</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.SOW_Final_Pricing__c.Label}" for="q131"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd131sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.SOW_Final_Pricing__c}" id="q131" onclick="switchboxesleft(this.id,'{!$Component.q131count.q131countfield}', '{!$Component.q131sum.q131sumfield}', '13');"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q131count" >
+        <apex:inputField id="q131countfield"  style="width:20px;" value="{!Scorecard__c.Num_SOW_Final_Pricing__c}" onkeyup="switchboxesleft('{!$Component.qd131sect.q131}', '{!$Component.q131count.q131countfield}', '{!$Component.q131sum.q131sumfield}', '13')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q131sum">
+        <apex:inputField id="q131sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_SOW_Final_Pricing__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >13</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Redline_T_C__c.Label}" for="q132"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q132asked">
+        <apex:inputField style="width:20px;"  id="q132askedfield" value="{!Scorecard__c.Got_Redline_T_C__c}" onclick="switchboxesright2('{!$Component.q132.q132field}','{!$Component.q132asked.q132askedfield}','{!$Component.q132denied.q132deniedfield}', '{!$Component.q132sum.q132sumfield}',13)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q132denied">
+        <apex:inputField style="width:20px;"  id="q132deniedfield" value="{!Scorecard__c.Denied_Redline_T_C__c}" onclick="switchboxesright3('{!$Component.q132.q132field}','{!$Component.q132asked.q132askedfield}','{!$Component.q132denied.q132deniedfield}', '{!$Component.q132sum.q132sumfield}',13)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q132">
+        <apex:inputField style="width:20px;"  id="q132field" value="{!Scorecard__c.Redline_T_C__c}" onclick="switchboxesright1('{!$Component.q132.q132field}','{!$Component.q132asked.q132askedfield}','{!$Component.q132denied.q132deniedfield}', '{!$Component.q132sum.q132sumfield}',13)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q132sum">
+        <apex:inputField id="q132sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Redline_T_C__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >14</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Better_Terms_less_than_25_deposit__c.Label}" for="q141"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="qd141sect" >
+        <apex:inputField id="q141"  style="width:20px;"  value="{!Scorecard__c.Better_Terms_less_than_25_deposit__c}" onclick="switchboxesleft(this.id,'{!$Component.q141count.q141countfield}', '{!$Component.q141sum.q141sumfield}', '14')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q141count">
+        <apex:inputField id="q141countfield" style="width:20px;" value="{!Scorecard__c.Num_Better_Terms_less_than_25_deposit__c}" onkeyup="switchboxesleft('{!$Component.qd141sect.q141}', '{!$Component.q141count.q141countfield}', '{!$Component.q141sum.q141sumfield}', '14')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q141sum">
+        <apex:inputField id="q141sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Better_Terms_less_than_25_deposit__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >14</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Internal_Referral__c.Label}" for="q142"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q142asked">
+        <apex:inputField style="width:20px;"  id="q142askedfield" value="{!Scorecard__c.Got_Internal_Referral__c}" onclick="switchboxesright2('{!$Component.q142.q142field}','{!$Component.q142asked.q142askedfield}','{!$Component.q142denied.q142deniedfield}', '{!$Component.q142sum.q142sumfield}',14)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q142denied">
+        <apex:inputField style="width:20px;"  id="q142deniedfield" value="{!Scorecard__c.Denied_Internal_Referral__c}" onclick="switchboxesright3('{!$Component.q142.q142field}','{!$Component.q142asked.q142askedfield}','{!$Component.q142denied.q142deniedfield}', '{!$Component.q142sum.q142sumfield}',14)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q142">
+        <apex:inputField style="width:20px;"  id="q142field" value="{!Scorecard__c.Internal_Referral__c}" onclick="switchboxesright1('{!$Component.q142.q142field}','{!$Component.q142asked.q142askedfield}','{!$Component.q142denied.q142deniedfield}', '{!$Component.q142sum.q142sumfield}',14)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q142sum">
+        <apex:inputField id="q142sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Internal_Referral__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->    
+    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >15</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.References_people_they_can_call__c.Label}" for="q151"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd151sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.References_people_they_can_call__c}" id="q151" onclick="switchboxesleft(this.id,'{!$Component.q151count.q151countfield}', '{!$Component.q151sum.q151sumfield}', '15')"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q151count" >
+        <apex:inputField id="q151countfield"  style="width:20px;" value="{!Scorecard__c.Num_References_people_they_can_call__c}" onkeyup="switchboxesleft('{!$Component.qd151sect.q151}', '{!$Component.q151count.q151countfield}', '{!$Component.q151sum.q151sumfield}', '15')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q151sum">
+        <apex:inputField id="q151sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_References_people_they_can_call__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >15</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Final_Decision_Meeting_with_Power__c.Label}" for="q152"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q152asked">
+        <apex:inputField style="width:20px;"  id="q152askedfield" value="{!Scorecard__c.Got_Final_Decision_Meeting_with_Power__c}" onclick="switchboxesright2('{!$Component.q152.q152field}','{!$Component.q152asked.q152askedfield}','{!$Component.q152denied.q152deniedfield}', '{!$Component.q152sum.q152sumfield}',15)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q152denied">
+        <apex:inputField style="width:20px;"  id="q152deniedfield" value="{!Scorecard__c.Denied_Final_Decision_Meeting_with_Power__c}" onclick="switchboxesright3('{!$Component.q152.q152field}','{!$Component.q152asked.q152askedfield}','{!$Component.q152denied.q152deniedfield}', '{!$Component.q152sum.q152sumfield}',15)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q152">
+        <apex:inputField style="width:20px;"  id="q152field" value="{!Scorecard__c.Final_Decision_Meeting_with_Power__c}" onclick="switchboxesright1('{!$Component.q152.q152field}','{!$Component.q152asked.q152askedfield}','{!$Component.q152denied.q152deniedfield}', '{!$Component.q152sum.q152sumfield}',15)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q152sum">
+        <apex:inputField id="q152sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Final_Decision_Meeting_with_Power__c}"/>     
+    </apex:pageBlockSectionItem>            
+    
+<!-- -->    
+            
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >16</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.More_time_to_make_a_decision_30_days__c.Label}" for="q161"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd161sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.More_time_to_make_a_decision_30_days__c}" id="q161" onclick="switchboxesleft(this.id,'{!$Component.q161count.q161countfield}', '{!$Component.q161sum.q161sumfield}', '16')"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q161count" >
+        <apex:inputField id="q161countfield"  style="width:20px;" value="{!Scorecard__c.Num_More_time_to_make_a_decision_30_days__c}" onkeyup="switchboxesleft('{!$Component.qd161sect.q161}', '{!$Component.q161count.q161countfield}', '{!$Component.q161sum.q161sumfield}', '16')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q161sum">
+        <apex:inputField id="q161sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_More_time_to_make_a_decision_30_days__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >16</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.External_Referral__c.Label}" for="q162"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q162asked">
+        <apex:inputField style="width:20px;"   id="q162askedfield" value="{!Scorecard__c.Got_External_Referral__c}" onclick="switchboxesright2('{!$Component.q162.q162field}','{!$Component.q162asked.q162askedfield}','{!$Component.q162denied.q162deniedfield}', '{!$Component.q162sum.q162sumfield}',16)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q162denied">
+        <apex:inputField style="width:20px;"  id="q162deniedfield" value="{!Scorecard__c.Denied_External_Referral__c}" onclick="switchboxesright3('{!$Component.q162.q162field}','{!$Component.q162asked.q162askedfield}','{!$Component.q162denied.q162deniedfield}', '{!$Component.q162sum.q162sumfield}',16)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q162">
+        <apex:inputField style="width:20px;"  id="q162field" value="{!Scorecard__c.External_Referral__c}" onclick="switchboxesright1('{!$Component.q162.q162field}','{!$Component.q162asked.q162askedfield}','{!$Component.q162denied.q162deniedfield}', '{!$Component.q162sum.q162sumfield}',16)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q162sum">
+        <apex:inputField id="q162sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_External_Referral__c}"/>     
+    </apex:pageBlockSectionItem>            
+    
+<!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >17</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Day_in_the_life__c.Label}" for="q171"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd171sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.Day_in_the_life__c}" id="q171" onclick="switchboxesleft(this.id, '{!$Component.q171count.q171countfield}', '{!$Component.q171sum.q171sumfield}', '17')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q171count" >
+        <apex:inputField id="q171countfield"  style="width:20px;" value="{!Scorecard__c.Num_Day_in_the_life__c}" onkeyup="switchboxesleft('{!$Component.qd171sect.q171}', '{!$Component.q171count.q171countfield}', '{!$Component.q171sum.q171sumfield}', '17')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q171sum">
+        <apex:inputField id="q171sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Day_in_the_life__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >17</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Larger_volume_deal__c.Label}" for="q172"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q172asked">
+        <apex:inputField style="width:20px;"  id="q172askedfield" value="{!Scorecard__c.Got_Larger_volume_deal__c}" onclick="switchboxesright2('{!$Component.q172.q172field}','{!$Component.q172asked.q172askedfield}','{!$Component.q172denied.q172deniedfield}', '{!$Component.q172sum.q172sumfield}',17)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q172denied">
+        <apex:inputField style="width:20px;"  id="q172deniedfield" value="{!Scorecard__c.Denied_Larger_volume_deal__c}" onclick="switchboxesright3('{!$Component.q172.q172field}','{!$Component.q172asked.q172askedfield}','{!$Component.q172denied.q172deniedfield}', '{!$Component.q172sum.q172sumfield}',17)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q172">
+        <apex:inputField style="width:20px;"  id="q172field" value="{!Scorecard__c.Larger_volume_deal__c}" onclick="switchboxesright1('{!$Component.q172.q172field}','{!$Component.q172asked.q172askedfield}','{!$Component.q172denied.q172deniedfield}', '{!$Component.q172sum.q172sumfield}',17)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q172sum">
+        <apex:inputField id="q172sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Larger_volume_deal__c}"/>     
+    </apex:pageBlockSectionItem>    
+<!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >18</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Hold_Date__c.Label}" for="q181"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd181sect">
+        <apex:inputField style="width:20px;" id="q181" value="{!Scorecard__c.Hold_Date__c}" onclick="switchboxesleft(this.id, '{!$Component.q181count.q181countfield}', '{!$Component.q181sum.q181sumfield}', '18')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q181count" >
+        <apex:inputField id="q181countfield"  style="width:20px;" value="{!Scorecard__c.Num_Hold_Date__c}" onkeyup="switchboxesleft('{!$Component.qd181sect.q181}', '{!$Component.q181count.q181countfield}', '{!$Component.q181sum.q181sumfield}', '18')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q181sum">
+        <apex:inputField id="q181sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Hold_Date__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >18</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Signed_Contract__c.Label}" for="q182"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q182asked">
+        <apex:inputField style="width:20px;"  id="q182askedfield" value="{!Scorecard__c.Got_Signed_Contract__c}" onclick="switchboxesright2('{!$Component.q182.q182field}','{!$Component.q182asked.q182askedfield}','{!$Component.q182denied.q182deniedfield}', '{!$Component.q182sum.q182sumfield}',18)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q182denied">
+        <apex:inputField style="width:20px;"  id="q182deniedfield" value="{!Scorecard__c.Denied_Signed_Contract__c}" onclick="switchboxesright3('{!$Component.q182.q182field}','{!$Component.q182asked.q182askedfield}','{!$Component.q182denied.q182deniedfield}', '{!$Component.q182sum.q182sumfield}',18)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q182">
+        <apex:inputField style="width:20px;"  id="q182field" value="{!Scorecard__c.Signed_Contract__c}" onclick="switchboxesright1('{!$Component.q182.q182field}','{!$Component.q182asked.q182askedfield}','{!$Component.q182denied.q182deniedfield}', '{!$Component.q182sum.q182sumfield}',18)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q182sum">
+        <apex:inputField id="q182sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Signed_Contract__c}"/>     
+    </apex:pageBlockSectionItem>    
+<!-- -->
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >19</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.International_Travel__c.Label}" for="q191"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd191sect">
+        <apex:inputField style="width:20px;"  value="{!Scorecard__c.International_Travel__c}" id="q191" onclick="switchboxesleft(this.id,'{!$Component.q191count.q191countfield}',  '{!$Component.q191sum.q191sumfield}', '19')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q191count" >
+        <apex:inputField id="q191countfield"  style="width:20px;" value="{!Scorecard__c.Num_International_Travel__c}" onkeyup="switchboxesleft('{!$Component.qd191sect.q191}', '{!$Component.q191count.q191countfield}', '{!$Component.q191sum.q191sumfield}', '19')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q191sum">
+        <apex:inputField id="q191sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_International_Travel__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >19</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Case_Study_Testimonial_Logo__c.Label}" for="q192"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q192asked">
+        <apex:inputField style="width:20px;"  id="q192askedfield" value="{!Scorecard__c.Got_Case_Study_Testimonial_Logo__c}" onclick="switchboxesright2('{!$Component.q192.q192field}','{!$Component.q192asked.q192askedfield}','{!$Component.q192denied.q192deniedfield}', '{!$Component.q192sum.q192sumfield}',19)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q192denied">
+        <apex:inputField style="width:20px;"  id="q192deniedfield" value="{!Scorecard__c.Denied_Case_Study_Testimonial_Logo__c}" onclick="switchboxesright3('{!$Component.q192.q192field}','{!$Component.q192asked.q192askedfield}','{!$Component.q192denied.q192deniedfield}', '{!$Component.q192sum.q192sumfield}',19)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q192">
+        <apex:inputField style="width:20px;"   id="q192field" value="{!Scorecard__c.Case_Study_Testimonial_Logo__c}" onclick="switchboxesright1('{!$Component.q192.q192field}','{!$Component.q192asked.q192askedfield}','{!$Component.q192denied.q192deniedfield}', '{!$Component.q192sum.q192sumfield}',19)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q192sum">
+        <apex:inputField id="q192sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Case_Study_Testimonial_Logo__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->
+                                      
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >20</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Free_Pilot__c.Label}" for="q201"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="qd201sect">
+        <apex:inputField style="width:20px;" id="q201" value="{!Scorecard__c.Free_Pilot__c}" onclick="switchboxesleft(this.id,'{!$Component.q201count.q201countfield}',  '{!$Component.q201sum.q201sumfield}', '20')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q201count" >
+        <apex:inputField id="q201countfield"  style="width:20px;" value="{!Scorecard__c.Num_Free_Pilot__c}" onkeyup="switchboxesleft('{!$Component.qd201sect.q201}', '{!$Component.q201count.q201countfield}', '{!$Component.q201sum.q201sumfield}', '20')"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q201sum">
+        <apex:inputField id="q201sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Free_Pilot__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >20</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Long_term_contract_monthly_yearly__c.Label}" for="q202"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q202asked">
+        <apex:inputField style="width:20px;"  id="q202askedfield" value="{!Scorecard__c.Got_Long_term_contract_monthly_yearly__c}" onclick="switchboxesright2('{!$Component.q202.q202field}','{!$Component.q202asked.q202askedfield}','{!$Component.q202denied.q202deniedfield}', '{!$Component.q202sum.q202sumfield}',20)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q202denied">
+        <apex:inputField style="width:20px;"  id="q202deniedfield" value="{!Scorecard__c.Denied_Long_term_contract_monthly_yearly__c}" onclick="switchboxesright3('{!$Component.q202.q202field}','{!$Component.q202asked.q202askedfield}','{!$Component.q202denied.q202deniedfield}', '{!$Component.q202sum.q202sumfield}',20)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;"  id="q202">
+        <apex:inputField style="width:20px;"  id="q202field" value="{!Scorecard__c.Long_term_contract_monthly_yearly__c}" onclick="switchboxesright1('{!$Component.q202.q202field}','{!$Component.q202asked.q202askedfield}','{!$Component.q202denied.q202deniedfield}', '{!$Component.q202sum.q202sumfield}',20)"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q202sum">
+        <apex:inputField id="q202sumfield" onkeypress="alert('You cannot edit this field');return false;" style="width:20px;" value="{!Scorecard__c.Sum_Long_term_contract_monthly_yearly__c}"/>     
+    </apex:pageBlockSectionItem>        
+</apex:pageBlockSection>
+
+<!-- -->
+<apex:pageBlockSection columns="4" id="totalblock">
+
+    <apex:pageBlockSectionItem dataStyle="width:20%;"><apex:outputLabel >TOTAL SCORE GIVES</apex:outputLabel>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;" id="sumleft" >
+    <apex:inputField onkeypress="alert('You cannot edit this field');return false;" style="width:30px;"  id="sumleftfield" value="{!Scorecard__c.SumGives__c}"/> 
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20%;"><apex:outputLabel >TOTAL SCORE GETS</apex:outputLabel>
+    </apex:pageBlockSectionItem>
+    
+    <apex:pageBlockSectionItem dataStyle="width:30%;" id="sumright" >
+    <apex:inputField onkeypress="alert('You cannot edit this field');return false;" style="width:30px;"  id="sumrightfield" value="{!Scorecard__c.SumGets__c}"/> 
+    </apex:pageBlockSectionItem>
+    
+    
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

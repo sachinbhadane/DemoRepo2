@@ -1,0 +1,100 @@
+/*
+ * This class contains unit tests for validating the behavior of Apex classes
+ * and triggers.
+ *
+ * Unit tests are class methods that verify whether a particular piece
+ * of code is working properly. Unit test methods take no arguments,
+ * commit no data to the database, and are flagged with the testMethod
+ * keyword in the method definition.
+ *
+ * All test methods in an organization are executed whenever Apex code is deployed
+ * to a production organization to confirm correctness, ensure code
+ * coverage, and prevent regressions. All Apex classes are
+ * required to have at least 75% code coverage in order to be deployed
+ * to a production organization. In addition, all triggers must have some code coverage.
+ * 
+ * The @isTest class annotation indicates this class only contains test
+ * methods. Classes defined with the @isTest annotation do not count against
+ * the organization size limit for all Apex scripts.
+ *
+ * See the Apex Language Reference for more information about Testing and Code Coverage.
+ */
+@isTest
+private class Test_NewScorecardController {
+
+    static testMethod void NewScorecardControlleUnitTest()
+  	{
+        // TO DO: implement unit test
+       	Test.startTest();
+        TemplateMaster__c objTemplate = new TemplateMaster__c(Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+   		insert objTemplate;
+    	TemplateDetail__c objTemplateDetails = new TemplateDetail__c (
+                                  										Get_Description__c='First Get Description',
+									                                 	Get_Points__c=1,
+									                                  	Give_Description__c='First Give Description',
+									                                  	TemplateMaster__c=objTemplate.Id
+                                  										);
+    	insert objTemplateDetails;
+    	
+    	
+    	
+    	ScrdMaster__c objScoreCardMaster =new ScrdMaster__c (Total_Give_Score__c=5,Total_Get_Score__c=5,TemplateMaster__c = objTemplate.id,
+                              SName__c = 'Master Score Card',Status__c ='Saved'); 
+    	insert objScoreCardMaster;
+    	
+    
+   		 ScoreCardDetails__c objScoreCardDetails = new ScoreCardDetails__c (ScrdMaster__c = objScoreCardMaster.Id,Sc_of_Times__c=2,Sc_Give_Point__c=1,
+                                  Sc_Get_Description__c ='First Get Description',Sc_Give_Description__c='First Give Description',Sc_Get__c=true,Sc_Get_Point__c=1,
+                                  Sc_Gave__c= true,Sc_Asked_Not_Got__c=false,Sc_Asked_Denied__c=false);     
+                                
+    	insert objScoreCardDetails ;
+    	
+   		//Edit
+   	 	ApexPages.StandardController StandardCtrl = new ApexPages.standardController(objScoreCardMaster);
+        NewScorecardController objNewScorecardController = new NewScorecardController(StandardCtrl);
+        objNewScorecardController.PageAction();
+        objNewScorecardController.cancel();
+        ApexPages.currentPage().getParameters().put('retURL','return url');
+        objNewScorecardController.cancel();
+        objNewScorecardController.onEditScoreCard();
+        ApexPages.currentPage().getParameters().put('id',objScoreCardMaster.Id);
+        pageReference pf = objNewScorecardController.SaveScoreCard();
+        pagereference pfNew1 = objNewScorecardController.PageActionDel();
+       
+        ApexPages.StandardController StandardCtrl2 = new ApexPages.standardController(objScoreCardMaster);
+        NewScorecardController objNewScorecardController2 = new NewScorecardController(StandardCtrl2);
+      	ApexPages.currentPage().getParameters().put('delID',objScoreCardMaster.id);
+    	pagereference pfNew189 = objNewScorecardController2.PageActionDel();
+       
+        ScrdMaster__c objScoreCardMasterSubmitted =new ScrdMaster__c (Total_Give_Score__c=5,Total_Get_Score__c=5,TemplateMaster__c = objTemplate.id,
+                              SName__c = 'Master Score Card11',Status__c =Label.ScoreCard_Status_Approved); 
+    	
+        ScoreCardDetails__c objScoreCardDetailsSubmitted = new ScoreCardDetails__c (ScrdMaster__c = objScoreCardMasterSubmitted.Id,Sc_of_Times__c=2,Sc_Give_Point__c=1,
+                                  Sc_Get_Description__c ='First Get Description89',Sc_Give_Description__c='First Give Description89',Sc_Get__c=true,Sc_Get_Point__c=1,
+                                  Sc_Gave__c= true,Sc_Asked_Not_Got__c=false,Sc_Asked_Denied__c=false);     
+    
+        ApexPages.StandardController StandardCtrl89 = new ApexPages.standardController(New ScrdMaster__c());
+        NewScorecardController objNewScorecardController89 = new NewScorecardController(StandardCtrl89);
+         	ApexPages.currentPage().getParameters().put('id',objScoreCardMasterSubmitted.Id);
+        objNewScorecardController89.PageAction();
+     	objNewScorecardController89.cancel();
+        objNewScorecardController89.onEditScoreCard();
+        objNewScorecardController89.bEdit=true;
+       // objNewScorecardController89.SaveScoreCard().getParameters().put(objSelectedTemplate,objTemplate);
+        pageReference pf89 = objNewScorecardController89.SaveScoreCard();
+       	ApexPages.currentPage().getParameters().put('delID',objScoreCardMasterSubmitted.id);
+        objNewScorecardController89.PageActionDel();
+        
+        //Insert
+   		ScrdMaster__c objScoreCardMaster1 =new ScrdMaster__c (Total_Give_Score__c=5,Total_Get_Score__c=5,TemplateMaster__c = objTemplate.id,
+                              SName__c = 'MasterCard',Status__c ='Submitted'); 
+       	ApexPages.currentPage().getParameters().put('id',objScoreCardMaster1.Id);
+       	ApexPages.StandardController StandardCtrl1 = new ApexPages.standardController(objScoreCardMaster1);
+        NewScorecardController objNewScorecardController1 = new NewScorecardController(StandardCtrl1);
+    	objNewScorecardController1.fillTemplate();
+		pageReference pf1 = objNewScorecardController1.SaveScoreCard();
+		ApexPages.currentPage().getParameters().put('delID',objScoreCardMaster1.id);
+		objNewScorecardController1.PageActionDel();
+        Test.stopTest();
+    }
+}

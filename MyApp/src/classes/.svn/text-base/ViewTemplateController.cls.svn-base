@@ -1,0 +1,118 @@
+public with sharing class ViewTemplateController
+{
+	//Variables
+	private String retId;
+	private String delUrl;
+	private String delID;
+	private String returnURL;
+	private String strId;
+	//Properties
+	public Boolean disableFlag{set;get;}
+	public Boolean renderActiveButtonFlag{set;get;}
+	public Boolean deleteButtonFlag{set;get;}
+	//Lists
+	public  List<TemplateDetail__c> lstTempItemDetails{set;get;}
+	public TemplateMaster__c objTemplate {set;get;}
+	private TemplateMaster__c objDelete = new TemplateMaster__c(); 
+	//Constructor
+	public ViewTemplateController(ApexPages.StandardController stdController)
+	{
+		renderActiveButtonFlag=true;
+		deleteButtonFlag = false;
+		delID = ApexPages.currentPage().getParameters().get('delId');
+		strId = ApexPages.currentPage().getParameters().get('id');
+		returnURL = ApexPages.currentPage().getParameters().get('retURL');
+		if(delID != null)
+		{
+			delUrl = delId.substring(0, 3);
+			if(([select count() from ScrdMaster__c where TemplateMaster__c =: delId]) == 0)
+			{
+				deleteButtonFlag = true;
+				UtitLity.addConfirm(Label.Delete_Template);
+			}
+			else
+			{
+				Utitlity.addError(Label.Error_Message_for_not_Deletion);
+			}
+		}
+		else
+		{
+			deleteButtonFlag = false;
+		}
+		retId = strId.substring(0, 3);
+		this.objTemplate = (TemplateMaster__c)stdController.getRecord();
+		objTemplate  = [Select t.TStatus__c,t.TName__c,t.Version__c,t.Name,t.Id,Owner.FirstName From TemplateMaster__c t where Id =:strId];
+		lstTempItemDetails = [Select TemplateMaster__c,Give_Description__c,Get_Points__c,Get_Description__c
+							  From TemplateDetail__c where TemplateMaster__c =:objTemplate.Id order by Get_Points__c Asc];
+		if(objTemplate.TStatus__c==Label.TemplateStatus_Active)
+		{
+			disableFlag=false;
+		}
+		else if(objTemplate.TStatus__c==Label.TemplateStatus_Obsolete)
+		{
+			renderActiveButtonFlag=false;
+		}
+		else
+		{
+			disableFlag=true;
+		}
+	}
+	//Action method for checking whether Template is active and not used 
+	public pagereference pageAction()
+	{
+		pagereference pgRef = null;
+		if(returnURL != null && delID == null)
+		{
+			TemplateMaster__c objSelectedTemplate = new TemplateMaster__c();
+			objSelectedTemplate = [select Name,Version__c,TStatus__c from TemplateMaster__c where TemplateMaster__c.id =: strId ];
+			if(objSelectedTemplate.TStatus__c == Label.TemplateStatus_Active && ([select count() from ScrdMaster__c where TemplateMaster__c =: strId]) == 0 )
+			{
+				pgRef = new pagereference('/apex/EditTemplatePage?id='+strId+'&retURL='+returnURL);
+			}
+			else
+			{
+				Utitlity.addMessage(Label.Template_Edit_Error);
+				pgRef = null;
+			}
+		}
+		return pgref;
+	}
+	//method to delete template
+	public pagereference deleteTemplate()
+	{
+		delUrl = delId.substring(0, 3);
+		objDelete = [select Name,TStatus__c,Version__c from TemplateMaster__c where TemplateMaster__c.Id =: delId];
+		delete objDelete;
+		Pagereference pgRef = new pagereference('/'+delUrl+'/o');
+		return pgRef;
+	}
+	//method to create version of existing template
+	public Pagereference createVersion()
+	{		
+		pagereference pgref=new pagereference('/apex/EditTemplatePage?id='+strId);
+		return pgref;		
+	}
+	//method to activate template
+	public pagereference activateTemplate()
+	{ 
+		disableFlag=false;
+		objTemplate.TStatus__c=Label.TemplateStatus_Active;
+		update objTemplate;
+		return null;
+	}
+	//method to deactivate template
+	public pagereference deactivate()
+	{
+		disableFlag=true;
+		objTemplate.TStatus__c=Label.TemplateStatus_Inactive;
+		update objTemplate;
+		return null;
+	}
+	//method for cancel button
+	public pagereference cancel()
+	{
+		pagereference pgref1=new pagereference('/'+retId+'/o');
+		pgref1.setRedirect(true);
+		return pgref1;
+	}
+}

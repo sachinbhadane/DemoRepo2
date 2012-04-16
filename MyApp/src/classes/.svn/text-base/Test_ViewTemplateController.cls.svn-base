@@ -1,0 +1,49 @@
+@isTest
+private with sharing class Test_ViewTemplateController 
+{
+	static testMethod void ViewTemplateController()
+	{
+		Test.startTest();
+		TemplateMaster__c objTemplate = new TemplateMaster__c(TName__c='TTTT',Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate;
+		TemplateDetail__c newDetailRecord = new TemplateDetail__c (
+																	Get_Description__c='First Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='First Give Description',
+																	TemplateMaster__c=objTemplate.Id
+																	);
+		insert newDetailRecord;
+		System.currentPagereference().getParameters().put('id',objTemplate.Id);
+		System.currentPagereference().getParameters().put('delId',objTemplate.Id);
+		System.currentPagereference().getParameters().put('retURL','/apex/ViewTemplatePage');
+		ApexPages.Standardcontroller stdCtrl = new Apexpages.Standardcontroller(objTemplate);
+		ViewTemplateController objTemplateController = new ViewTemplateController(stdCtrl);
+		objTemplateController.deactivate();
+		objTemplateController.activateTemplate();
+		
+		objTemplateController.createVersion();
+		objTemplate.TStatus__c=Label.TemplateStatus_Obsolete;
+		update objTemplate;
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate);
+		ViewTemplateController objTemplateController1 = new ViewTemplateController(stdCtrl1);
+		objTemplateController1.cancel();
+		objTemplate.TStatus__c=Label.TemplateStatus_Inactive;
+		update objTemplate;
+		ApexPages.Standardcontroller stdCtrl2 = new Apexpages.Standardcontroller(objTemplate);
+		ViewTemplateController objTemplateController2 = new ViewTemplateController(stdCtrl2);
+		objTemplateController.activateTemplate();
+		
+		objTemplate.TStatus__c=Label.TemplateStatus_Active;
+		update objTemplate;
+		ApexPages.Standardcontroller stdCtrl3 = new Apexpages.Standardcontroller(objTemplate);
+		ViewTemplateController objTemplateController3 = new ViewTemplateController(stdCtrl3);
+		System.currentPagereference().getParameters().put('delId',objTemplate.Id);
+		System.debug('***DelId'+objTemplate.Id);
+		System.currentPagereference().getParameters().put('retURL',null);
+		objTemplateController3.pageAction();
+		System.currentPagereference().getParameters().put('delId',objTemplate.Id);
+		objTemplateController3.deleteTemplate();
+		
+		Test.stopTest();
+	}
+}

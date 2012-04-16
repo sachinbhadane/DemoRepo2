@@ -1,0 +1,98 @@
+@isTest
+private with sharing class Test_EditTemplateController 
+{
+	static testMethod void EditTemplateController()
+	{	
+		Test.startTest();
+		System.currentPagereference().getParameters().put('delId','102234');
+		TemplateMaster__c objTemplate = new TemplateMaster__c(TName__c='TTTT',Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate;
+		TemplateDetail__c newDetailRecord = new TemplateDetail__c (
+																	Get_Description__c='First Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='First Give Description',
+																	TemplateMaster__c=objTemplate.Id
+																	);
+		insert newDetailRecord;
+		System.currentPagereference().getParameters().put('id',objTemplate.Id);
+		ApexPages.Standardcontroller stdCtrl = new Apexpages.Standardcontroller(objTemplate);
+		EditTemplateController objTemplateController = new EditTemplateController(stdCtrl);
+		
+		
+		objTemplateController.Save();
+		objTemplateController.AddMore();
+		objTemplateController.Save();
+		
+		objTemplateController.Remove();
+		objTemplateController.Save();
+	
+		TemplateMaster__c objTemplate1 = new TemplateMaster__c(TName__c='TTTT',Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate1;
+		TemplateDetail__c newDetailRecord1 = new TemplateDetail__c (
+																	Get_Description__c='Second Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='Second Give Description',
+																	TemplateMaster__c=objTemplate1.Id
+																	);
+		insert newDetailRecord1;
+		objTemplateController.saveExtension();
+		objTemplateController.checkSimillarityFunction();
+		
+		//New 
+		System.currentPagereference().getParameters().put('retURL','10223423');
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate);
+		EditTemplateController objTemplateController1 = new EditTemplateController(stdCtrl1);
+		
+		TemplateDetail__c newDetailRecord2 = new TemplateDetail__c (
+																	Get_Description__c='pppSecond Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='pppSecond Give Description',
+																	TemplateMaster__c=objTemplate.Id
+																	);
+		insert newDetailRecord2;
+		
+		
+		//objTemplateController1.lstDeleteItems.add(newDetailRecord2); 
+		
+		if(!objTemplateController1.lstDeleteItems.isEmpty()){
+			objTemplateController1.lstDeleteItems[0].detailsItems = newDetailRecord2;
+			//objTemplateController1.lstDeleteItems[0].flag = true;
+			objTemplateController1.Remove();
+			objTemplateController1.Save();
+		}
+		
+		
+		//Todays modifications
+		
+		System.currentPagereference().getParameters().put('retURL','10223423');
+		ApexPages.Standardcontroller stdCtrl2 = new Apexpages.Standardcontroller(objTemplate);
+		EditTemplateController objTemplateController2 = new EditTemplateController(stdCtrl2);
+		
+		TemplateDetail__c newDetailRecord3 = new TemplateDetail__c (
+																	Get_Description__c='pppSecond Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='pppSecond Give Description',
+																	TemplateMaster__c=objTemplate.Id
+																	);
+		insert newDetailRecord3;  
+		
+		
+		//objTemplateController1.lstDeleteItems.add(newDetailRecord2); 
+		
+		//objTemplateController1.lstDeleteItems[0].detailsItems = newDetailRecord3;
+			objTemplateController2.returnURL = '123';
+			objTemplateController2.lstTemplateItems[0].detailsItems = newDetailRecord3;
+			//objTemplateController2.lstDeleteItems[0].detailsItems = newDetailRecord3;
+			objTemplateController2.lstTemplateItems[0].flag = true;
+			objTemplateController2.Remove();
+			objTemplateController2.Save();
+		
+		
+		
+		
+		
+		
+		
+		Test.stopTest();	
+	}
+}

@@ -1,0 +1,889 @@
+<apex:page standardcontroller="Scorecard__c">
+<apex:form >
+<apex:pageBlock title="Score Card" id="thePageBlock" mode="view">
+<apex:pageMessages />
+
+<apex:pageBlockButtons >
+<apex:commandButton value="Edit" action="{!edit}"/>
+<apex:commandButton value="Delete" action="{!delete}"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection title="General Information" columns="1" >
+<apex:pageBlockSectionItem dataStyle="width:20px;">
+<apex:outputLabel value="Score Card name" for="scorecard_name"/>
+<apex:outputField value="{!Scorecard__c.Name}" id="scorecard_name"/> 
+</apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection title="Scoring" columns="11" >
+    <apex:pageBlockSectionItem dataStyle="width:10px;"><b>Pts</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;"><b></b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;background-color:green;"><b>Gave</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;background-color:gray;"><b># of Times</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;"><b>Total</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;"><b>Pts</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;"><b></b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;background-color:yellow;"><b>Asked Not Got</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;background-color:red;"><b>Asked Denied</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;background-color:green;"><b>Got</b></apex:pageBlockSectionItem>
+    <apex:pageBlockSectionItem dataStyle="width:10px;"><b>Total</b></apex:pageBlockSectionItem>
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >1</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Collateral_Info_White_Paper__c.Label}" for="q11"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Collateral_Info_White_Paper__c}" id="q11" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Collateral_Info_White_Paper__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q11sum">
+        <apex:outputField id="q11sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Collateral_Info_White_Paper__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >1</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel style="width:20px;" value="{!$ObjectType.Scorecard__c.fields.Qualification_Meeting_Accept_Invite__c.Label}" for="q12"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Got_Qualification_Meeting_Accept_Inv__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Denied_Qualification_Meeting_Accept_Inv__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Qualification_Meeting_Accept_Invite__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q12sum">
+        <apex:outputField id="q12sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Qualification_Meeting_Accept_Inv__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >2</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Names_of_clients_we_do_business_with__c.Label}" for="q21"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Names_of_clients_we_do_business_with__c}" id="q21" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Names_of_clients_we_do_business_with__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q21sum">
+        <apex:outputField id="q21sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Names_of_clients_we_do_business_with__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >2</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Sign_up_for_Kensei_e_mail_list__c.Label}" for="q22"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Sign_up_for_Kensei_e_mail_list__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Sign_up_for_Kensei_e_mail_list__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" >
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Sign_up_for_Kensei_e_mail_list__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q22sum">
+        <apex:outputField id="q22sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Sign_up_for_Kensei_e_mail_list__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+    
+    <!-- -->
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >3</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Competitive_Matrix_Differentiators__c.Label}" for="q31"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Competitive_Matrix_Differentiators__c}" id="q31" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Competitive_Matrix_Differentiators__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q31sum">
+        <apex:outputField id="q31sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Competitive_Matrix_Differentiators__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >3</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Agenda_Feedback_3rd_pt_in_3_pt_agenda__c.Label}" for="q32"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Agenda_Feedback_3rd_pt_in_3_pt__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Agenda_Feedback_3rd_pt_in_3_pt__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Agenda_Feedback_3rd_pt_in_3_pt_agenda__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q32sum">
+        <apex:outputField id="q32sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Agenda_Feedback_3rd_pt_in_3_pt__c}"/>     
+    </apex:pageBlockSectionItem>    
+    <!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >4</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Pricing_General__c.Label}" for="q41"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Pricing_General__c}" id="q41" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Pricing_General__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q41sum">
+        <apex:outputField id="q41sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Pricing_General__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >4</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Sales_team_structure_and_s__c.Label}" for="q42"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Sales_team_structure_and_s__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Sales_team_structure_and_s__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Sales_team_structure_and_s__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q42sum">
+        <apex:outputField id="q42sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Sales_team_structure_and_s__c}"/>     
+    </apex:pageBlockSectionItem>    
+    <!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >5</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Web_Presentation__c.Label}" for="q51"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Web_Presentation__c}" id="q51" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Web_Presentation__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q51sum">
+        <apex:outputField id="q51sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Web_Presentation__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >5</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Competition_Current_and_Historic__c.Label}" for="q52"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Competition_Current_and_Historic__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Competition_Current_and_Historic__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Competition_Current_and_Historic__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q52sum">
+        <apex:outputField id="q52sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Competition_Current_and_Historic__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >6</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Meeting_Non_Decision_Makers__c.Label}" for="q61"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Meeting_Non_Decision_Makers__c}" id="q61" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Meeting_Non_Decision_Makers__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q61sum">
+        <apex:outputField id="q61sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Meeting_Non_Decision_Makers__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >6</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.DM_Timeline_Process__c.Label}" for="q62"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_DM_Timeline_Process__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_DM_Timeline_Process__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.DM_Timeline_Process__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q62sum">
+        <apex:outputField id="q62sumfield" style="width:20px;" value="{!Scorecard__c.Sum_DM_Timeline_Process__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+<!-- -->    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >7</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Brief_Training_of_techniques_1_hr__c.Label}" for="q71"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Brief_Training_of_techniques_1_hr__c}" id="q71" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Brief_Training_of_techniques_1_hr__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q71sum">
+        <apex:outputField id="q71sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Brief_Training_of_techniques_1_hr__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >7</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Success_criteria_and_committed_next_step__c.Label}" for="q72"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Success_criteria_and_committed__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Success_criteria_and_committed__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Success_criteria_and_committed_next_step__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q72sum">
+        <apex:outputField id="q72sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Success_criteria_and_committed__c}"/>     
+    </apex:pageBlockSectionItem>    
+    
+<!-- -->    
+    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >8</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Proposal_with_Plan_Outline__c.Label}" for="q81"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Proposal_with_Plan_Outline__c}" id="q81" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Proposal_with_Plan_Outline__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q81sum">
+        <apex:outputField id="q81sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Proposal_with_Plan_Outline__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >8</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Meeting_with_DMs__c.Label}" for="q82"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Meeting_with_DMs__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Meeting_with_DMs__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Meeting_with_DMs__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q82sum">
+        <apex:outputField id="q82sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Meeting_with_DMs__c}"/>     
+    </apex:pageBlockSectionItem>    
+
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >9</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Discount_Level1__c.Label}" for="q91"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Discount_Level1__c}" id="q91" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Discount_Level1__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q91sum">
+        <apex:outputField id="q91sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Discount_Level1__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >9</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Budget__c.Label}" for="q92"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Budget__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Budget__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Budget__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q92sum">
+        <apex:outputField id="q92sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Budget__c}"/>     
+    </apex:pageBlockSectionItem>        
+
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >10</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Better_Terms_Net30__c.Label}" for="q101"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Better_Terms_Net30__c}" id="q101" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Better_Terms_Net30__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q101sum">
+        <apex:outputField id="q101sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Better_Terms_Net30__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >10</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Org_Chart__c.Label}" for="q102"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Org_Chart__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Org_Chart__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Org_Chart__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q102sum">
+        <apex:outputField id="q102sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Org_Chart__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >11</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Customized_Training__c.Label}" for="q111"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Customized_Training__c}" id="q111" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Customized_Training__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q111sum">
+        <apex:outputField id="q111sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Customized_Training__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >11</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Champion__c.Label}" for="q112"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Champion__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Champion__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Champion__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q112sum">
+        <apex:outputField id="q112sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Champion__c}"/>     
+    </apex:pageBlockSectionItem>        
+    
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >12</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Discount_Level2__c.Label}" for="q121"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Discount_Level2__c}" id="q121" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Discount_Level2__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q121sum">
+        <apex:outputField id="q121sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Discount_Level2__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >12</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Competitive_Proposals__c.Label}" for="q122"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Competitive_Proposals__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Competitive_Proposals__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Competitive_Proposals__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q122sum">
+        <apex:outputField id="q122sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Competitive_Proposals__c}"/>     
+    </apex:pageBlockSectionItem>        
+    
+<!-- -->    
+
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >13</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.SOW_Final_Pricing__c.Label}" for="q131"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.SOW_Final_Pricing__c}" id="q131" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_SOW_Final_Pricing__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q131sum">
+        <apex:outputField id="q131sumfield" style="width:20px;" value="{!Scorecard__c.Sum_SOW_Final_Pricing__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >13</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Redline_T_C__c.Label}" for="q132"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Redline_T_C__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Redline_T_C__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Redline_T_C__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q132sum">
+        <apex:outputField id="q132sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Redline_T_C__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >14</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Better_Terms_less_than_25_deposit__c.Label}" for="q141"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Better_Terms_less_than_25_deposit__c}" id="q141" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Better_Terms_less_than_25_deposit__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q141sum">
+        <apex:outputField id="q141sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Better_Terms_less_than_25_deposit__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >14</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Internal_Referral__c.Label}" for="q142"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Internal_Referral__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Internal_Referral__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Internal_Referral__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q142sum">
+        <apex:outputField id="q142sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Internal_Referral__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->    
+    
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >15</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.References_people_they_can_call__c.Label}" for="q151"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.References_people_they_can_call__c}" id="q151" />
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_References_people_they_can_call__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q151sum">
+        <apex:outputField id="q151sumfield" style="width:20px;" value="{!Scorecard__c.Sum_References_people_they_can_call__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >15</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Final_Decision_Meeting_with_Power__c.Label}" for="q152"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Final_Decision_Meeting_with_Power__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Final_Decision_Meeting_with_Power__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Final_Decision_Meeting_with_Power__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q152sum">
+        <apex:outputField id="q152sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Final_Decision_Meeting_with_Power__c}"/>     
+    </apex:pageBlockSectionItem>            
+    
+<!-- -->    
+            
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >16</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.More_time_to_make_a_decision_30_days__c.Label}" for="q161"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.More_time_to_make_a_decision_30_days__c}" id="q131" />
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_More_time_to_make_a_decision_30_days__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q161sum">
+        <apex:outputField id="q161sumfield" style="width:20px;" value="{!Scorecard__c.Sum_More_time_to_make_a_decision_30_days__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >16</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.External_Referral__c.Label}" for="q132"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_External_Referral__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_External_Referral__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.External_Referral__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q162sum">
+        <apex:outputField id="q162sumfield" style="width:20px;" value="{!Scorecard__c.Sum_External_Referral__c}"/>     
+    </apex:pageBlockSectionItem>            
+    
+<!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >17</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Day_in_the_life__c.Label}" for="q171"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Day_in_the_life__c}" id="q171" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Day_in_the_life__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q171sum">
+        <apex:outputField id="q171sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Day_in_the_life__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >17</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Larger_volume_deal__c.Label}" for="q172"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Larger_volume_deal__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Larger_volume_deal__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Larger_volume_deal__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q172sum">
+        <apex:outputField id="q172sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Larger_volume_deal__c}"/>     
+    </apex:pageBlockSectionItem>    
+<!-- -->
+    
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >18</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Hold_Date__c.Label}" for="q181"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Hold_Date__c}" id="q181" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Hold_Date__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q181sum">
+        <apex:outputField id="q181sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Hold_Date__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >18</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Signed_Contract__c.Label}" for="q182"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Signed_Contract__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Signed_Contract__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Signed_Contract__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q182sum">
+        <apex:outputField id="q182sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Signed_Contract__c}"/>     
+    </apex:pageBlockSectionItem>    
+<!-- -->
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >19</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.International_Travel__c.Label}" for="q191"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.International_Travel__c}" id="q191" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_International_Travel__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q191sum">
+        <apex:outputField id="q191sumfield" style="width:20px;" value="{!Scorecard__c.Sum_International_Travel__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >19</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Case_Study_Testimonial_Logo__c.Label}" for="q192"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Case_Study_Testimonial_Logo__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Case_Study_Testimonial_Logo__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Case_Study_Testimonial_Logo__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q192sum">
+        <apex:outputField id="q192sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Case_Study_Testimonial_Logo__c}"/>     
+    </apex:pageBlockSectionItem>        
+<!-- -->
+                                      
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >20</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Free_Pilot__c.Label}" for="q201"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Free_Pilot__c}" id="q201" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;" value="{!Scorecard__c.Num_Free_Pilot__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q201sum">
+        <apex:outputField id="q201sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Free_Pilot__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10px;height:35px;"><apex:outputLabel >20</apex:outputLabel></apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:30%;">
+        <apex:outputLabel value="{!$ObjectType.Scorecard__c.fields.Long_term_contract_monthly_yearly__c.Label}" for="q202"/>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Got_Long_term_contract_monthly_yearly__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Denied_Long_term_contract_monthly_yearly__c}"/>     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;">
+        <apex:outputField style="width:20px;"  value="{!Scorecard__c.Long_term_contract_monthly_yearly__c}" />     
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:20px;" id="q202sum">
+        <apex:outputField id="q202sumfield" style="width:20px;" value="{!Scorecard__c.Sum_Long_term_contract_monthly_yearly__c}"/>     
+    </apex:pageBlockSectionItem>        
+</apex:pageBlockSection>
+
+
+<apex:pageBlockSection columns="4" id="totalblock">
+
+    <apex:pageBlockSectionItem dataStyle="width:40%;"><apex:outputLabel style="font-size:16pt;">TOTAL SCORE GIVES</apex:outputLabel>
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:10%;" id="sumleft" >
+    <apex:outputText style="font-size:16pt;width:30px;"  id="sumleftfield" value="{!Scorecard__c.SumGives__c}"/> 
+    </apex:pageBlockSectionItem>
+
+    <apex:pageBlockSectionItem dataStyle="width:40%;"><apex:outputLabel style="font-size:16pt;">TOTAL SCORE GETS</apex:outputLabel>
+    </apex:pageBlockSectionItem>
+    
+    <apex:pageBlockSectionItem dataStyle="width:30%;" id="sumright" >
+    <apex:outputText style="font-size:16pt;width:30px;"  id="sumrightfield" value="{!Scorecard__c.SumGets__c}"/> 
+    </apex:pageBlockSectionItem>
+    
+    
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

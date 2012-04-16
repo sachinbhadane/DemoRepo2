@@ -1,0 +1,101 @@
+<apex:page renderas="pdf" standardcontroller="ScrdMaster__c" id="ViewScoreCard" sidebar="false" tabStyle="ScrdMaster__c" action="{!PageActionDel}" extensions="NewScorecardController" standardStylesheets="false">
+<apex:form id="idForm"><!--  renderas="pdf" -->
+	<apex:pageMessages id="pgMsg" />
+	
+	<apex:actionStatus id="status"/>
+	<apex:outPutPanel id="idOpPanelNew">
+		<apex:pageBlock title="{!$Label.Score_Card_Label}" id="idPageBlock" >
+			<apex:pageBlockButtons id="idpgbButtons">
+				<apex:commandButton immediate="true" value="{!$Label.Button_cancel}" action="{!cancel}" id="idCancelButton"/>
+			</apex:pageBlockButtons>
+			<Table>
+				<tr><td>
+					<apex:outputLabel value="{!$Label.ScoreCard_Name} :" for="idIpName" id="idOpLabelName"/>
+					</td><td><apex:outputField value="{!objScoreCardMaster.Name}"  id="idIpName" />
+				</td></tr>
+				<tr><td>
+					<apex:outputLabel value="{!$ObjectType.Opportunity.Label} :" for="idopFieldOpp" id="idOpLabelOpp"/></td><td>
+					<apex:outputField value="{!objScoreCardMaster.Opportunity__c}" id="idopFieldOpp"  />
+				</td></tr>
+				<tr><td>
+					<apex:outputLabel value="{!$Label.Template_Label} :" for="idopFieldOpp" id="idOpLabelTemp1"/></td><td>
+					<apex:outputLabel value="{!objScoreCardMaster.TemplateMaster__r.Name}" id="idopFieldOppLabel" />
+				</td></tr>
+				<tr><td>
+					<apex:outputLabel value="{!$Label.Template_Version} :" for="idopFieldTmpVer" id="idTmpVersion"/></td><td>	
+					<apex:OutputField value="{!objScoreCardMaster.Version__c}" id="idVersion"/>	 
+				</td></tr>
+				<tr><td>
+					<apex:outputLabel value="{!$Label.Status_Label} :" for="idopFieldOpp" id="idScStatus"/></td><td>
+					<apex:outputLabel value="{!objScoreCardMaster.Status__c}" id="idStatus" /> 
+				</td></tr>
+			</Table>
+			
+			<!-- Page Block for Score Card Table -->
+			<apex:pageBlockSection title="{!$Label.ScoreCard_Scoring}" id="topblock" rendered="{!showPageBlockTable}" columns="1">
+					 <apex:dataTable value="{!lstChildTemplateDetails}" id="pgbTable_1" var="varTemDetails" border="1" style="text-align:center">
+					 	<apex:column id="idColPoints" headerValue="{!$Label.ScoreCard_TH_Points}">
+							<apex:OutputField value="{!varTemDetails.objTemplateDetails.Get_Points__c}" id="idPoints"  />
+						</apex:column>
+						
+						 <apex:column id="idColDesc" headerValue="{!$Label.ScoreCard_TH_DesGive}">
+								<apex:OutputField value="{!varTemDetails.objTemplateDetails.Give_Description__c}" id="idGiveDesc" style="width:100px;" />
+						</apex:column>
+						<apex:column id="idColGave" headerValue="{!$Label.ScoreCard_TH_Gave}" >
+							<apex:image id="imgGave" value="{!$Resource.Checkbox_Checked}" rendered="{!varTemDetails.bGave}" />
+						</apex:column>
+						
+						<apex:column id="idColFreq" headerValue="{!$Label.ScoreCard_Th_NumofTimes}">
+							<apex:inputText value="{!varTemDetails.intNumTime}"  id="idFreq" disabled="true"  style="width:30px;"/>
+						</apex:column>
+						
+						<apex:column id="idColTotal" headerValue="{!$Label.ScoreCard_TH_Total}">
+							<apex:outputText value="{!varTemDetails.intGiveTotal}" id="idTotal" style="width:30px;"/>
+						</apex:column>
+						
+<!-- 						<apex:column id="blank" headerValue=""> -->
+<!-- 							<div style="width:60px;">&nbsp;</div> -->
+<!-- 						</apex:column> -->
+						
+						<apex:column id="idColGetPts" headerValue="{!$Label.ScoreCard_TH_Points}">
+							<apex:OutputField value="{!varTemDetails.objTemplateDetails.Get_Points__c}" id="idGetPoint" />
+						</apex:column>
+						
+						<apex:column id="idColGetDesc" headerValue="{!$Label.ScoreCard_TH_DesGet}">
+							<apex:OutputField value="{!varTemDetails.objTemplateDetails.Get_Description__c}" id="idGetDesc" style="width:100px;"/>
+						</apex:column>
+						
+						<apex:column id="idColAskNot" headerValue="{!$Label.ScoreCard_TH_Awaited}">
+							<apex:image id="imgAskNotGot" value="{!$Resource.Checkbox_Checked}" rendered="{!varTemDetails.bAskNotGot}" />
+						</apex:column>
+						
+						<apex:column id="idColDenied" headerValue="{!$Label.ScoreCard_TH_Denied}">
+							<apex:image id="imgAskedDenied" value="{!$Resource.Checkbox_Checked}" rendered="{!varTemDetails.bAskedDenied}" />
+						</apex:column>
+						
+						<apex:column id="idColGot" headerValue="{!$Label.ScoreCare_TH_Got}">
+							<apex:image id="imgGot" value="{!$Resource.Checkbox_Checked}" rendered="{!varTemDetails.bGot}" />
+	 					</apex:column>
+						<apex:column id="idColGotTotal" headerValue="{!$Label.ScoreCard_TH_Total}">
+							<apex:outputText value="{!varTemDetails.intGotTotal}" id="idGotTotal"  style="width:30px;"/>
+						</apex:column>
+				</apex:dataTable>
+				
+		</apex:pageBlockSection>
+		<Table style="padding-top:20px;" width="100%"><tr><td>Total Score</td>
+				</tr><tr>
+				<td Width="200px"><apex:outputLabel value="{!$Label.ScoreCard_TH_TotalGives}" id="lblTotalScoreGives"/></td>
+				<td><apex:outputText value="{0,number,#.##}" styleClass="totalScoreGet">
+						    	<apex:param value="{!objScoreCardMaster.Total_Give_Score__c}"  />
+							</apex:outputText></td>
+				<td style="padding-left:250px"><nobr><apex:outputLabel value="{!$Label.ScoreCardd_TH_TotalGet}" id="lblTotalScoreGets"/></nobr> </td>
+				<td><apex:outputText value="{0,number,#.##}" styleClass="totalScoreGet">
+						    	<apex:param value="{!objScoreCardMaster.Total_Get_Score__c}"  />
+							</apex:outputText></td>
+		</tr></Table>
+			</apex:pageBlock>
+		
+	</apex:outPutPanel>
+	
+</apex:form>
+</apex:page>

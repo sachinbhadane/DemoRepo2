@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Activate</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Activate</shortDescription>
+        <value>Activate</value>
+    </labels>
+    <labels>
+        <fullName>Button_Add_More</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Add More</shortDescription>
+        <value>Add More</value>
+    </labels>
+    <labels>
+        <fullName>Button_Delete</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Delete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>Button_Edit</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Button_Remove</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Remove</shortDescription>
+        <value>Remove</value>
+    </labels>
+    <labels>
+        <fullName>Button_Save</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>Button_cancel</fullName>
+        <categories>Button</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button_cancel</shortDescription>
+        <value>Go Back</value>
+    </labels>
+    <labels>
+        <fullName>Create_Version</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Create Version</shortDescription>
+        <value>Create Version</value>
+    </labels>
+    <labels>
+        <fullName>Created_By</fullName>
+        <categories>System Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Created By</shortDescription>
+        <value>Created By</value>
+    </labels>
+    <labels>
+        <fullName>Deactivate</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deactivate</shortDescription>
+        <value>Deactivate</value>
+    </labels>
+    <labels>
+        <fullName>Deatcivate</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deatcivate</shortDescription>
+        <value>Deactivate</value>
+    </labels>
+    <labels>
+        <fullName>Delete_Template</fullName>
+        <categories>Message to Confirm</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Delete Template</shortDescription>
+        <value>You are about to delete this Template, Press Delete button to Confirm.</value>
+    </labels>
+    <labels>
+        <fullName>Empty_Score_Card</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Empty Score Card</shortDescription>
+        <value>You cannot save an empty Scorecard.</value>
+    </labels>
+    <labels>
+        <fullName>Empty_Template_Name</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Empty Template Name</shortDescription>
+        <value>Enter Template Name.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Blank_Row</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Blank Row</shortDescription>
+        <value>You cannot insert blank records.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Blank_Template_Detail</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Blank Template Detail</shortDescription>
+        <value>Please Insert at Least One Detail Record.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_CheckBoxSelection</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for CheckBoxSelection</shortDescription>
+        <value>Select at least one row to Delete.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Duplicate_Records</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Duplicate Records</shortDescription>
+        <value>You Cannot Insert Duplicate Records.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Duplicate_TemplateName</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Duplicate TemplateName</shortDescription>
+        <value>Template Already Exists, Enter Some Different Template Name.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Empty_Version</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Empty Version</shortDescription>
+        <value>New Version Cannot be Empty.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Non_ExistingTemplate</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Non ExistingTemplate</shortDescription>
+        <value>Template does not Exist.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Submitted_Scorecard</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Submitted Scorecard</shortDescription>
+        <value>You cannot delete a scorecard with &quot;Submitted&quot; status.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_Version</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for Version</shortDescription>
+        <value>New version cannot be same as previous version.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_for_not_Deletion</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message for not Deletion</shortDescription>
+        <value>This Template cannot be deleted, there are Scorecards modeled on this Template.</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_AddedSucessfully</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_AddedSucessfully</shortDescription>
+        <value>Score Card Added successfully.</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_CantDelete</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_CantDelete</shortDescription>
+        <value>You Cannot Delete an Approved Score Card.</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_GeneralInformation</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_GeneralInformation</shortDescription>
+        <value>General Information</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_NameAlreadyExist</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_NameAlreadyExist</shortDescription>
+        <value>Score Card Name Already Exists.</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_Scoring</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_Scoring</shortDescription>
+        <value>Scoring</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_Status_Approved</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard Status Approved</shortDescription>
+        <value>Approved</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_Status_Rejected</fullName>
+        <categories>ScoreCard Status</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard Status Rejected</shortDescription>
+        <value>Rejected</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_Status_Saved</fullName>
+        <categories>ScoreCard Status</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_Status_Saved</shortDescription>
+        <value>Saved</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_Status_Submitted</fullName>
+        <categories>ScoreCard Status</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard Status Submitted</shortDescription>
+        <value>Submitted</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_Awaited</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_Awaited</shortDescription>
+        <value>Asked and Awaited</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_Denied</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_Denied</shortDescription>
+        <value>Asked but Denied</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_DesGet</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_DesGet</shortDescription>
+        <value>Vendor expectations (Get)</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_DesGive</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_DesGive</shortDescription>
+        <value>Customer expectations (Give)</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_Gave</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_Gave</shortDescription>
+        <value>Gave</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_Points</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_Points</shortDescription>
+        <value>Points</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_Total</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_Total</shortDescription>
+        <value>Total</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_TH_TotalGives</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_TH_TotalGives</shortDescription>
+        <value>TOTAL SCORE GIVES</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_Th_NumofTimes</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_Th_NumofTimes</shortDescription>
+        <value># of Times</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCard_UpdateSucessfully</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCard_UpdateSucessfully</shortDescription>
+        <value>Score Card Updated successfully.</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCardd_TH_SrNo</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCardd_TH_SrNo</shortDescription>
+        <value>Sr.No.</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCardd_TH_TotalGet</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCardd_TH_TotalGet</shortDescription>
+        <value>TOTAL SCORE GETS</value>
+    </labels>
+    <labels>
+        <fullName>ScoreCare_TH_Got</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ScoreCare_TH_Got</shortDescription>
+        <value>Got</value>
+    </labels>
+    <labels>
+        <fullName>Score_Card_Label</fullName>
+        <categories>Score Card</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Score Card Label</shortDescription>
+        <value>Score Card</value>
+    </labels>
+    <labels>
+        <fullName>Status_Label</fullName>
+        <categories>Template Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Status Label</shortDescription>
+        <value>Status</value>
+    </labels>
+    <labels>
+        <fullName>TemplateStatus_Active</fullName>
+        <categories>TemplateStatus</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TemplateStatus_Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
+        <fullName>TemplateStatus_Inactive</fullName>
+        <categories>TemplateStatus</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TemplateStatus_Inactive</shortDescription>
+        <value>Inactive</value>
+    </labels>
+    <labels>
+        <fullName>TemplateStatus_Obsolete</fullName>
+        <categories>TemplateStatus</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TemplateStatus_Obsolete</shortDescription>
+        <value>Obsolete</value>
+    </labels>
+    <labels>
+        <fullName>Template_Name</fullName>
+        <categories>Template</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Template Name</shortDescription>
+        <value>Template Name</value>
+    </labels>
+    <labels>
+        <fullName>Template_UpdateError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Template_UpdateError</shortDescription>
+        <value>Template Updated Successfully.</value>
+    </labels>
+    <labels>
+        <fullName>Template_Version</fullName>
+        <categories>Template Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Template Version</shortDescription>
+        <value>Version</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,55 @@
+<apex:page id="CreateNewScorecard" standardController="TemplateMaster__c"  extensions="TemplateController" sidebar="false" tabStyle="TemplateMaster__c" >
+<apex:form id="idForm">	
+
+<apex:pageMessages id="pmsg"/>
+	<apex:actionStatus id="counterStatus">
+	</apex:actionStatus>
+	<apex:outPutPanel id="idopPanelforcreate" >
+		<apex:pageBlock id="idpgBlock" Title="{!$Label.Create_Template}"> <!-- mode="edit" -->
+			<apex:pageBlockSection title="{!$Label.Create_Template}" id="idpbSection" columns="2">
+			<apex:pageBlockSectionItem id="idpbSectionItem" labelStyle="margine:40px;" >
+				    <apex:outputLabel value="{!$Label.Template_Name}" for="idInputName" />
+					<apex:inputField value="{!objTemplate.Name}" id="idInputName" required="true" />
+				</apex:pageBlockSectionItem>   
+			</apex:pageBlockSection>
+			</apex:pageBlock>
+		 <apex:pageBlock id="pgBlockDetails" mode="edit" >
+		 	 <apex:pageBlockButtons id="pgbDetails">
+				<apex:commandButton action="{!addMore}" title="Add More" value="{!$Label.Button_Add_More}" immediate="false"  rerender="idPgbTable,pmsg,idpgBlock" status="counterStatus" id="cbAddmore" /> <!-- immediate="true" -->
+				<apex:commandButton action="{!remove}" value="{!$Label.Button_Remove}" title="Remove Template" rerender="pmsg,idPgbTable" immediate="true"  status="counterStatus" id="cbRemove"/>
+				<apex:commandButton action="{!Save}" value="{!$Label.Button_Save}" title="Save Template" rerender="pgbDetails,pmsg,idPgbTable,idpgBlock" status="counterStatus" id="cbSave"/>
+				<apex:commandButton action="{!Cancel}" value="{!$Label.Button_cancel}" immediate="true" status="counterStatus"  id="cbCancel"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="{!$Label.Template_Details}" id="idpbsTempDetails" columns="1" >
+				<apex:pageBlockTable value="{!lstTempChilds}" var="item" style="width:100%" id="idPgbTable">
+				 	<apex:column id="colSerialNo" style="width: 5%">
+						<apex:facet name="header">{!$Label.ScoreCardd_TH_SrNo}</apex:facet>
+							{!item.iIndex}
+					</apex:column>
+					<apex:column id="idColPoints" style="width: 5%">
+					<apex:facet name="header" >{!$Label.ScoreCard_TH_Points}</apex:facet>
+				 	<apex:outputPanel styleClass="requiredInput" layout="block">   
+  				 	<apex:outputPanel styleClass="requiredBlock" layout="block"/>   
+					<apex:InputField value="{!item.objTemplateDetails.Get_Points__c}" id="idPoints"   style="width:40px"/>
+					</apex:outputPanel>  
+					</apex:column>
+					<apex:column id="idColGiveDesc" style="width:45%">
+						<apex:facet name="header" >{!$Label.ScoreCard_TH_DesGive}</apex:facet>
+			 		    <apex:outputPanel styleClass="requiredInput" layout="block">
+  						<apex:outputPanel styleClass="requiredBlock" layout="block"/> 
+						<apex:InputText value="{!item.objTemplateDetails.Give_Description__c}" id="idGiveDesc"  size="70"/>
+						</apex:outputPanel> 
+					</apex:column>
+					<apex:column id="idColGetDesc" style="width:45%" styleClass="requiredInput">
+						<apex:facet name="header" >{!$Label.ScoreCard_TH_DesGet}</apex:facet>
+					 <apex:outputPanel styleClass="requiredInput" layout="block">
+  						<apex:outputPanel styleClass="requiredBlock" layout="block"/> 	 
+  						<apex:InputText value="{!item.objTemplateDetails.Get_Description__c}" id="idGetDesc"   size="70"  />
+	 				 </apex:outputPanel> 
+					</apex:column>
+				</apex:pageBlockTable>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:outPutPanel>
+</apex:form>	
+</apex:page>

@@ -1,0 +1,143 @@
+@isTest
+private with sharing class Test_TemplateController 
+{
+	static testMethod void TemplateController()
+	{
+		Test.startTest();
+		
+<<<<<<< .mine
+	/*	TemplateMaster__c objTemplate1 = new TemplateMaster__c(Name='TT2',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate1;
+		TemplateDetail__c newDetailRecord1 = new TemplateDetail__c (
+																	Get_Description__c='GGGFirst Get Description',
+																	Get_Points__c=5,
+																	Give_Description__c='GGGFirst Give Description',
+																	TemplateMaster__c=objTemplate1.Id
+																	);
+																			
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate1);
+		TemplateController objTemplateController1 = new TemplateController(stdCtrl1);
+		if(!objTemplateController1.lstTempChilds.isEmpty()){
+			objTemplateController1.lstTempChilds[0].objTemplateDetails = newDetailRecord1;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController1.lstTempChilds);
+			objTemplateController1.Save();
+		}
+=======
+		TemplateMaster__c objTemplate1 = new TemplateMaster__c(Name='TT2',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate1;
+		TemplateDetail__c newDetailRecord1 = new TemplateDetail__c (
+																	Get_Description__c='GGGFirst Get Description',
+																	Get_Points__c=5,
+																	Give_Description__c='GGGFirst Give Description',
+																	TemplateMaster__c=objTemplate1.Id
+																	);
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate1);
+		TemplateController objTemplateController1 = new TemplateController(stdCtrl1);
+		if(!objTemplateController1.lstTempChilds.isEmpty()){
+			objTemplateController1.lstTempChilds[0].objTemplateDetails = newDetailRecord1;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController1.lstTempChilds);
+			objTemplateController1.Save();
+		}
+>>>>>>> .r4336
+		
+<<<<<<< .mine
+		objTemplateController1.AddMore();
+		objTemplateController1.Remove();
+		objTemplateController1.Save();
+	*/	
+=======
+		objTemplateController1.AddMore();
+		objTemplateController1.Remove();
+		objTemplateController1.Save();
+		
+>>>>>>> .r4336
+		TemplateMaster__c objTemplate = new TemplateMaster__c(Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+<<<<<<< .mine
+=======
+		//insert objTemplate;
+>>>>>>> .r4336
+		TemplateDetail__c newDetailRecord = new TemplateDetail__c (
+																	Get_Description__c='First Get Description',
+																	Get_Points__c=1,
+																	Give_Description__c='First Give Description',
+																	TemplateMaster__c=objTemplate.Id
+																	);
+<<<<<<< .mine
+		
+		ApexPages.Standardcontroller stdCtrl = new Apexpages.Standardcontroller(objTemplate);
+		TemplateController objTemplateController = new TemplateController(stdCtrl);
+		
+		if(!objTemplateController.lstTempChilds.isEmpty()){
+			objTemplateController.lstTempChilds[0].objTemplateDetails = newDetailRecord;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController.lstTempChilds);
+			objTemplateController.Save();
+		}
+=======
+		//insert newDetailRecord;*/
+		
+		ApexPages.Standardcontroller stdCtrl = new Apexpages.Standardcontroller(objTemplate);
+		TemplateController objTemplateController = new TemplateController(stdCtrl);
+		
+		if(!objTemplateController.lstTempChilds.isEmpty()){
+			objTemplateController.lstTempChilds[0].objTemplateDetails = newDetailRecord;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController.lstTempChilds);
+			objTemplateController.Save();
+		}
+		
+		//objTemplateController.Remove();
+>>>>>>> .r4336
+		objTemplateController.AddMore();
+		objTemplateController.Save();
+		
+		
+<<<<<<< .mine
+
+
+TemplateMaster__c objTemplate1 = new TemplateMaster__c(Name='TT2',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate1;
+		TemplateDetail__c newDetailRecord1 = new TemplateDetail__c (
+																	Get_Description__c='GGGFirst Get Description',
+																	Get_Points__c=5,
+																	Give_Description__c='GGGFirst Give Description',
+																	TemplateMaster__c=objTemplate1.Id
+																	);
+																			
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate1);
+=======
+		
+	/*	TemplateMaster__c objTemplate1 = new TemplateMaster__c(Name='TT2',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+		insert objTemplate1;
+		
+		ApexPages.Standardcontroller stdCtrl1 = new Apexpages.Standardcontroller(objTemplate1);
+>>>>>>> .r4336
+		TemplateController objTemplateController1 = new TemplateController(stdCtrl1);
+<<<<<<< .mine
+		if(!objTemplateController1.lstTempChilds.isEmpty()){
+			objTemplateController1.lstTempChilds[0].objTemplateDetails = newDetailRecord1;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController1.lstTempChilds);
+			objTemplateController1.Save();
+		}
+=======
+		if(!objTemplateController1.lstTempChilds.isEmpty()){
+			objTemplateController1.lstTempChilds[0].objTemplateDetails = newDetailRecord;
+			System.Debug('====objTemplateController.lstTempChilds===='+objTemplateController.lstTempChilds);
+			objTemplateController1.Save();
+		}
+		objTemplateController1.Remove();
+	*/	
+>>>>>>> .r4336
+		
+<<<<<<< .mine
+		objTemplateController1.AddMore();
+		objTemplateController1.Remove();
+		objTemplateController1.Save();
+
+
+=======
+		
+		
+>>>>>>> .r4336
+		Test.stopTest();
+	}
+	
+}

@@ -1,0 +1,362 @@
+public class NewScorecardController
+{
+	//Properties
+<<<<<<< .mine
+	private String strId{set;get;}
+	private String returnUrl {set;get;}
+	private String idScoreMasterDel {set;get;}
+	
+	public String idScoreMaster {set;get;}
+=======
+	private String strId{set;get;}
+	private String returnUrl {set;get;}
+	private String idScoreMasterDel {set;get;}
+	
+	public String idScoreMaster {set;get;}
+	
+>>>>>>> .r4336
+	public Boolean bEditOpportunity{set;get;}
+	public Boolean showSaveButton {get;set;}
+	public Boolean showPageBlockTable {get;set;}
+	public Boolean bEdit {get;set;}
+	public Boolean bCreate {get;set;}
+<<<<<<< .mine
+	
+=======
+	
+	public List<TemplateMaster__c> objTemplateMaster{set;get;}
+>>>>>>> .r4336
+	public List<ChildScorecardDetails> lstChildScorecardDetails {set;get;}
+	public List<ChildTemplateDetails> lstChildTemplateDetails {set;get;}
+	public ScrdMaster__c ScoreCardMaster {set;get;}
+	public ScrdMaster__c objScoreCardMaster{set;get;}
+	
+	//Constructor
+	public NewScorecardController(ApexPages.StandardController stdController)
+	{
+		this.objScoreCardMaster = (ScrdMaster__c)stdController.getRecord();
+		
+		bCreate = false;
+		bEdit = false;
+		showSaveButton = false;
+		bEditOpportunity = false;
+<<<<<<< .mine
+		lstChildScorecardDetails = 	new List<ChildScorecardDetails> ();
+=======
+		objTemplateMaster = new List<TemplateMaster__c>();
+>>>>>>> .r4336
+		
+		returnUrl = ApexPages.currentPage().getParameters().get('retURL');
+		idScoreMaster = ApexPages.currentPage().getParameters().get('id');
+		idScoreMasterDel= ApexPages.currentPage().getParameters().get('delID');
+		
+		if(idScoreMaster != null)
+			strId = idScoreMaster.substring(0, 3);
+<<<<<<< .mine
+=======
+		idScoreMasterDel= ApexPages.currentPage().getParameters().get('delID');
+		this.objScoreCardMaster = (ScrdMaster__c)stdController.getRecord();
+>>>>>>> .r4336
+<<<<<<< .mine
+		
+		if(idScoreMaster == null || idScoreMaster == '')//For Insert
+=======
+		objTemplateMaster = [select Name, TStatus__c, Version__c from TemplateMaster__c where TStatus__c =: Label.TemplateStatus_Active];
+		if(idScoreMaster == null)//For Insert
+>>>>>>> .r4336
+		{
+			bCreate =true;
+			showPageBlockTable =false;
+		}
+		else //For Edit
+		{
+			strId = idScoreMaster.substring(0, 3);
+			bEdit=true;
+			this.objScoreCardMaster  = [Select Name,Status__c,Total_Give_Score__c,Total_Get_Score__c,Opportunity__c,TemplateMaster__c,TemplateMaster__r.Name,Version__c from ScrdMaster__c where Id=: idScoreMaster];
+			fillTemplate();
+		}
+		if(objScoreCardMaster.Opportunity__c == null)
+			bEditOpportunity = true;
+		else
+			bEditOpportunity = false;
+	}
+	
+	//Check page should open in Create Mode or Edit mode
+	public pageReference pageAction()
+	{
+		pageReference pf = null;
+		if(objScoreCardMaster.Status__c != null && idScoreMasterDel == null)
+		{
+			if(objScoreCardMaster.Status__c != Label.ScoreCard_Status_Saved )
+			{
+				pf = new PageReference ('/apex/viewScoreCard?id='+objScoreCardMaster.Id);
+				pf.setRedirect(true);
+			}
+		}	
+		return pf;
+	}
+	
+	// For Delete Score Card
+	public pageReference pageActionDel()
+	{
+		pageReference pf = null;
+		if(idScoreMasterDel !=null){
+				this.objScoreCardMaster  = [Select Name,Status__c,Total_Give_Score__c,Opportunity__c,Total_Get_Score__c,TemplateMaster__c,TemplateMaster__r.Name,Version__c from ScrdMaster__c where Id=:idScoreMasterDel];
+				if(objScoreCardMaster.Status__c == Label.ScoreCard_Status_Saved || objScoreCardMaster.Status__c == Label.Scorecard_Status_Rejected)
+				{
+					Id OppId = objScoreCardMaster.Opportunity__c;
+					delete objScoreCardMaster  ;
+					pf = new PageReference ('/'+OppId);
+					pf.setRedirect(true);
+				}
+				else
+				{
+					if(objScoreCardMaster.Status__c == Label.ScoreCard_Status_Approved)
+						Utitlity.addError(Label.ScoreCard_CantDelete);
+					else 
+						Utitlity.addError(Label.Error_Message_for_Submitted_Scorecard);
+				}
+			}	
+			return pf;
+	}
+	
+	//Cance button Action
+	public pageReference cancel()
+	{
+<<<<<<< .mine
+		pageReference pf = null;
+		if(returnUrl == null)
+			pf = new pageReference ('/'+ strId+'/o');
+=======
+		pageReference pf = null;
+		if(returnUrl==null)
+			pf = new pageReference ('/'+ strId+'/o');
+>>>>>>> .r4336
+		else
+			pf = new pagereference(returnUrl);
+		
+		return pf;
+	}
+	
+	// Save Score Card and Score Card Master object
+	public pageReference saveScoreCard()
+	{
+		database.Saveresult objResult = null;
+		pageReference pf = new pageReference('');
+		TemplateMaster__c objSelectedTemplate =new TemplateMaster__c(); 
+		List<ScoreCardDetails__c> lstScoreCardDetails =new List<ScoreCardDetails__c>();
+		//Check If Alredy Exist
+		try
+		{
+			for(TemplateMaster__c obj:[select Id,Version__c from TemplateMaster__c where Name =:objScoreCardMaster.TemplateMaster__c and TStatus__c =: Label.TemplateStatus_Active])
+				objSelectedTemplate = obj;
+		}
+		catch(Exception ex)
+		{
+			Utitlity.addError(Label.Error_Message_for_Non_ExistingTemplate);
+			return null;
+		}
+				
+		try
+		{
+			if((objScoreCardMaster.Total_Give_Score__c == 0) && (objScoreCardMaster.Total_Get_Score__c == 0))
+			{
+				Utitlity.addError(Label.Empty_Score_Card);
+				return null;
+			}
+			if(bCreate)
+			{
+				//Insert Score Card Master
+				objScoreCardMaster.Status__c = Label.ScoreCard_Status_Saved;
+				
+				if(objSelectedTemplate == null)
+				{
+					Utitlity.addError(Label.Error_Message_for_Non_ExistingTemplate);
+					return null;
+				}
+				if([select count() from ScrdMaster__c where Name =:objScoreCardMaster.Name and Opportunity__c =: objScoreCardMaster.Opportunity__c]>0)
+				{
+					Utitlity.addError(Label.ScoreCard_NameAlreadyExist);
+					return null;
+				}
+				objScoreCardMaster.TemplateMaster__c = objSelectedTemplate.id;
+				objScoreCardMaster.Version__c = objSelectedTemplate.Version__c;
+				objResult = database.insert(objScoreCardMaster);
+				//Insert All Score Card Details
+				for(ChildTemplateDetails objChildTemplateDetails :lstChildTemplateDetails)
+				{
+					if(objResult.isSuccess())
+					{
+						ScoreCardDetails__c objScoreCardDetails =new ScoreCardDetails__c();
+						objScoreCardDetails.Sc_Get_Point__c = objChildTemplateDetails.objTemplateDetails.Get_Points__c;
+						objScoreCardDetails.Sc_Give_Description__c = objChildTemplateDetails.objTemplateDetails.Give_Description__c;
+						objScoreCardDetails.Sc_Gave__c = objChildTemplateDetails.bGave;
+						objScoreCardDetails.Sc_of_Times__c = objChildTemplateDetails.intNumTime;
+						objScoreCardDetails.Total_Give_Score__c = objChildTemplateDetails.intGiveTotal;
+						objScoreCardDetails.Sc_Get_Point__c = objChildTemplateDetails.objTemplateDetails.Get_Points__c;
+						objScoreCardDetails.ScrdMaster__c = objResult.getId();
+						objScoreCardDetails.Sc_Get_Description__c = objChildTemplateDetails.objTemplateDetails.Get_Description__c;
+						
+						objScoreCardDetails.Sc_Asked_Not_Got__c = objChildTemplateDetails.bAskNotGot;
+						objScoreCardDetails.Sc_Asked_Denied__c = objChildTemplateDetails.bAskedDenied;
+						objScoreCardDetails.Sc_Get__c = objChildTemplateDetails.bGot;
+						objScoreCardDetails.Total_Got_Score__c = objChildTemplateDetails.intGotTotal;
+							
+						lstScoreCardDetails.add(objScoreCardDetails);
+					}
+				}
+				insert lstScoreCardDetails;
+				Utitlity.addMessage(Label.ScoreCard_AddedSucessfully);
+				pf = new PageReference ('/apex/NewScoreCard?id='+objResult.getId());
+			}
+			else if(bEdit)
+			{
+				
+				for(ScoreCardDetails__c objScoreCardDetails : [Select s.Total_Got_Score__c,s.Total_Give_Score__c,s.ScrdMaster__c,s.Sc_Get_Description__c,s.Sc_of_Times__c, s.Sc_Give_Point__c, s.Sc_Give_Description__c, 
+																s.Sc_Get__c, s.Sc_Get_Point__c, s.Sc_Gave__c, s.Sc_Asked_Not_Got__c, 
+																s.Sc_Asked_Denied__c, s.Name, s.Id From ScoreCardDetails__c s where ScrdMaster__c =:objScoreCardMaster.Id order By Sc_Get_Point__c,Sc_Give_Point__c])
+				{
+					for(ChildTemplateDetails objChildTemplateDetails :lstChildTemplateDetails)
+					{
+						if(objScoreCardDetails.Sc_Give_Description__c == objChildTemplateDetails.objTemplateDetails.Give_Description__c && objScoreCardDetails.Sc_Get_Description__c == objChildTemplateDetails.objTemplateDetails.Get_Description__c)
+						{
+							objScoreCardDetails.Sc_Gave__c = objChildTemplateDetails.bGave;
+							objScoreCardDetails.Sc_of_Times__c = objChildTemplateDetails.intNumTime;
+							objScoreCardDetails.Total_Give_Score__c = objChildTemplateDetails.intGiveTotal;
+							objScoreCardDetails.Sc_Asked_Not_Got__c = objChildTemplateDetails.bAskNotGot;
+							objScoreCardDetails.Sc_Asked_Denied__c = objChildTemplateDetails.bAskedDenied;
+							objScoreCardDetails.Sc_Get__c = objChildTemplateDetails.bGot;
+							objScoreCardDetails.Total_Got_Score__c = objChildTemplateDetails.intGotTotal;
+							lstScoreCardDetails.add(objScoreCardDetails);
+						}
+					}
+				}
+				update objScoreCardMaster;
+				update lstScoreCardDetails;	
+				Utitlity.addMessage(Label.ScoreCard_UpdateSucessfully);
+				pf = new PageReference ('/apex/NewScoreCard?id='+objScoreCardMaster.Id);
+			}
+		}
+		Catch(Exception ex)
+		{
+			Utitlity.addMessage(String.valueOf(ex));
+		}
+		pf.setRedirect(true);
+		return pf;//ApexPages.currentPage();
+	}
+	
+	public void onEditScoreCard()
+	{
+			this.objScoreCardMaster = [Select s.Total_Give_Score__c,Total_Get_Score__c, s.TemplateMaster__c, s.Submitted__c, s.Submitted_By__c, s.SName__c, 
+									   s.Name, s.Id, s.Approved_Date__c, s.Approved_By__c From ScrdMaster__c s where Id =:objScoreCardMaster.Id];
+			
+			if(objScoreCardMaster != null)
+			{
+				for(ScoreCardDetails__c objScoreCardDetails : [Select s.ScrdMaster__c, s.Sc_of_Times__c, s.Sc_Give_Point__c, s.Sc_Give_Description__c, 
+																s.Sc_Get__c, s.Sc_Get_Point__c, s.Sc_Gave__c, s.Sc_Asked_Not_Got__c, 
+																s.Sc_Asked_Denied__c, s.Name, s.Id From ScoreCardDetails__c s where ScrdMaster__c =:objScoreCardMaster.Id order By Sc_Get_Point__c,Sc_Give_Point__c])
+				{
+						lstChildScorecardDetails.add(new  ChildScorecardDetails (objScoreCardDetails));													
+				}
+			
+			}						   
+	}
+	//Go button Action
+	public void fillTemplate()
+	{
+		showSaveButton = true;
+		showPageBlockTable = true;
+		lstChildTemplateDetails = new List<ChildTemplateDetails> ();
+		if(bCreate)
+		{
+			TemplateMaster__c objSelectedTemplate = new TemplateMaster__c (); 
+			try
+			{
+				objSelectedTemplate = [select Id,Version__c from TemplateMaster__c where Name =:objScoreCardMaster.TemplateMaster__c and TStatus__c =: Label.TemplateStatus_Active];
+			}
+			catch(Exception ex)
+			{
+				Utitlity.addError(String.valueOf(ex));
+			}
+			
+			if(objSelectedTemplate != null)
+			{
+				if(objScoreCardMaster.TemplateMaster__c != null)
+				{
+					for(TemplateDetail__c objTemplateDetails :[Select  TemplateMaster__c, Name, Id, Give_Description__c, Get_Points__c, Get_Description__c From TemplateDetail__c 
+															   					where TemplateMaster__c =:objSelectedTemplate.Id  order By Get_Points__c])
+					{
+						lstChildTemplateDetails.add(new ChildTemplateDetails(objTemplateDetails,false,0,0,false,false,false,0));
+					}
+				}
+			}
+			else
+				Utitlity.addMessage(Label.Error_Message_for_Non_ExistingTemplate); 
+		}
+		else if(bEdit)
+		{
+			for(ScoreCardDetails__c objScoreCardDetails : [Select s.Total_Got_Score__c,s.Total_Give_Score__c,s.ScrdMaster__c,s.Sc_Get_Description__c,s.Sc_of_Times__c, s.Sc_Give_Point__c, s.Sc_Give_Description__c, 
+																s.Sc_Get__c, s.Sc_Get_Point__c, s.Sc_Gave__c, s.Sc_Asked_Not_Got__c, 
+																s.Sc_Asked_Denied__c, s.Name, s.Id From ScoreCardDetails__c s where ScrdMaster__c =:objScoreCardMaster.Id order By Sc_Get_Point__c,Sc_Give_Point__c])
+				{
+					TemplateDetail__c objTemplateDetails= new TemplateDetail__c();
+					objTemplateDetails.Get_Points__c = objScoreCardDetails.Sc_Get_Point__c;
+					objTemplateDetails.Give_Description__c = objScoreCardDetails.Sc_Give_Description__c;
+					objTemplateDetails.Get_Points__c = objScoreCardDetails.Sc_Get_Point__c;
+					objTemplateDetails.Get_Description__c =objScoreCardDetails.Sc_Get_Description__c;
+					
+					lstChildTemplateDetails.add(new ChildTemplateDetails(objTemplateDetails,
+																		objScoreCardDetails.Sc_Gave__c,
+																		Integer.valueOf(objScoreCardDetails.Sc_of_Times__c),
+																		Integer.valueOf(objScoreCardDetails.Total_Give_Score__c),
+																		objScoreCardDetails.Sc_Asked_Not_Got__c,
+																		objScoreCardDetails.Sc_Asked_Denied__c,
+																		objScoreCardDetails.Sc_Get__c,
+																		Integer.valueOf(objScoreCardDetails.Total_Got_Score__c)));
+				}
+		}
+	}
+	
+	public class ChildScorecardDetails
+	{
+		public ScoreCardDetails__c objScoreCardDetails{set;get;}
+		public ChildScorecardDetails(ScoreCardDetails__c objScoreCardDetails)
+		{
+			this.objScoreCardDetails = objScoreCardDetails;
+		}	
+	}
+	
+	public class ChildTemplateDetails
+	{
+		public Boolean bAskNotGot{get;set;}
+		public Boolean bAskedDenied{get;set;}
+		public Boolean bGot{get;set;}
+		public Boolean bGave {set;get;}
+		
+		public Integer intGiveTotal{get;set;}
+		public Integer intNumTime {set;get;}
+		public Integer intGotTotal{set;get;}
+		public TemplateDetail__c objTemplateDetails {set;get;}
+		
+		public ChildTemplateDetails(TemplateDetail__c objTemplateDetails,
+														Boolean bGave,
+														Integer intNumTime,
+														Integer intGiveTotal,
+														Boolean bAskNotGot,
+														Boolean bAskedDenied,
+														Boolean bGot,
+														Integer intGotTotal)
+		{
+			this.objTemplateDetails = objTemplateDetails;
+			
+			this.bGave = bGave;
+			this.intNumTime = intNumTime;
+			this.intGiveTotal = intGiveTotal;
+			this.bAskNotGot = bAskNotGot;
+			this.bAskedDenied = bAskedDenied;
+			this.bGot = bGot;
+			this.intGotTotal = intGotTotal;
+			
+		}	
+	}
+}

@@ -1,0 +1,42 @@
+<apex:page standardController="TemplateMaster__c"  extensions="ViewTemplateController" sidebar="false"  action="{!pageAction}" tabStyle="TemplateMaster__c" id="ViewTemplatePage" >
+	<apex:form id="idForm" >
+	<apex:pageMessages id="idPgMessages"/>
+		<apex:pageBlock id="idpgBlock" Title="{!$Label.Template_Label}">
+			<apex:pageBlockSection title="{!$Label.View_Template}" id="idpbSection" >
+					<apex:pageBlockSectionItem id="idpbSectionItem_1">
+						<apex:outputLabel value="{!$Label.Template_Name}" for="idOutputName" />
+						<apex:OutputField value="{!objTemplate.Name}" id="idOutputName"/>
+					</apex:pageBlockSectionItem>
+					<apex:pageBlockSectionItem id="idpbSectionItem_2">
+						<apex:outputLabel value="{!$Label.Status_Label}" for="idOutputStatus" />
+						<apex:OutputField value="{!objTemplate.TStatus__c}" id="idOutputStatus"/>
+					</apex:pageBlockSectionItem>
+					<apex:pageBlockSectionItem id="idpbSectionItem_3">
+						<apex:outputLabel value="{!$Label.Template_Version}" for="idOutputVersion" />
+						<apex:OutputField value="{!objTemplate.Version__c}" id="idOutputVersion"/>
+					</apex:pageBlockSectionItem>
+					<apex:pageBlockSectionItem id="idpbSectionItem_4">
+						<apex:outputLabel value="{!$Label.Created_By}" for="idOutputCreatedby" />
+						<apex:OutputField value="{!objTemplate.Owner.FirstName}" id="idOutputCreatedBy"/>
+					</apex:pageBlockSectionItem>
+				</apex:pageBlockSection>
+			</apex:pageBlock>
+			<apex:pageBlock id="idpgBlockDetails" Title="{!$Label.Template_Details}">
+				<apex:pageBlockButtons id="pgbtnDetails">
+					<apex:commandButton action="{!createVersion}" title="Create New Version" Value="{!$Label.Create_Version}" immediate="false" id="cbCreateVersion" disabled="{!disableFlag}" rendered="{!renderActiveButtonFlag}" />			
+					<apex:commandButton action="{!deactivate}" title="Makes template unavailable" Value="{!$Label.Deactivate}"  immediate="false" id="cbDeactivate" disabled="{!disableFlag}" rendered="{!renderActiveButtonFlag}" />			
+					<apex:commandButton action="{!activateTemplate}" title="Re-activate your template" Value="{!$Label.Activate}" immediate="false" id="cbActivate" disabled="{!NOT(disableFlag)}" rendered="{!renderActiveButtonFlag}" />
+					<apex:commandButton action="{!cancel}" title="Go Back" value="{!$Label.Button_cancel}" immediate="true" status="counterStatus"  id="cbCancel"/>
+					<apex:commandButton action="{!deleteTemplate}" title="Delete" value="{!$Label.Button_Delete}" immediate="true" status="counterStatus"  id="cbDelete11" rendered="{!deleteButtonFlag}" />
+					
+				</apex:pageBlockButtons>
+				<apex:pageBlockSection title="{!$Label.View_Template_Details}" id="idpbSection_2" columns="1">
+					<apex:pageBlockTable value="{!lstTempItemDetails}" var="item"  id="idPgbTable">
+						<apex:column headerValue="{!$Label.ScoreCard_TH_Points}" value="{!item.Get_Points__c}" id="idCol2" />
+						<apex:column headerValue="{!$Label.ScoreCard_TH_DesGive}" value="{!item.Give_Description__c}" id="idCol3"/>
+						<apex:column headerValue="{!$Label.ScoreCard_TH_DesGet}" value="{!item.Get_Description__c}" id="idCol4"/>
+					</apex:pageBlockTable>
+				</apex:pageBlockSection>		
+			</apex:pageBlock>
+		</apex:form>
+</apex:page>

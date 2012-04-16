@@ -1,0 +1,12 @@
+@isTest
+private with sharing class Test_LookupScoreCardTemplateController
+{
+	static testMethod void LookupScoreCardTemplateController()	
+	{
+		ApexPages.currentPage().getParameters().put('lksrch','Search string');
+		TemplateMaster__c objTemplate = new TemplateMaster__c(Name='TT1',TStatus__c=Label.TemplateStatus_Active,Version__c=1);
+   		insert objTemplate;
+        LookupScoreCardTemplateController objNewScorecardController = new LookupScoreCardTemplateController();
+   		objNewScorecardController.search();
+	}
+}
