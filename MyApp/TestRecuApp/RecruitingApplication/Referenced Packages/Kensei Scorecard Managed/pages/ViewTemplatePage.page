@@ -1,0 +1,42 @@
+<apex:page standardController="Ksc__TemplateMaster__c"  extensions="Ksc.ViewTemplateController" sidebar="false"  action="{!init}" tabStyle="Ksc__TemplateMaster__c" id="ViewTemplatePage" >
+	<apex:form id="idForm" >
+	<apex:pageMessages id="idPgMessages"/>
+		<apex:pageBlock id="idpgBlock" Title="{!$Label.ksc__Template_Label}">
+			<apex:pageBlockSection title="{!$Label.ksc__View_Template}" id="idpbSection" >
+					<apex:pageBlockSectionItem id="idpbSectionItem_1">
+						<apex:outputLabel value="{!$Label.ksc__Template_Name}" for="idOutputName" />
+						<apex:OutputField value="{!objTemplate.Name}" id="idOutputName"/>
+					</apex:pageBlockSectionItem>
+					<apex:pageBlockSectionItem id="idpbSectionItem_2">
+						<apex:outputLabel value="{!$Label.ksc__Status_Label}" for="idOutputStatus" />
+						<apex:OutputField value="{!objTemplate.Ksc__TStatus__c}" id="idOutputStatus"/>
+					</apex:pageBlockSectionItem> 
+					<apex:pageBlockSectionItem id="idpbSectionItem_3">
+						<apex:outputLabel value="{!$Label.ksc__Template_Version}" for="idOutputVersion" />
+						<apex:OutputField value="{!objTemplate.Ksc__Version__c}" id="idOutputVersion"/>
+					</apex:pageBlockSectionItem>
+					<apex:pageBlockSectionItem id="idpbSectionItem_4">
+						<apex:outputLabel value="{!$Label.ksc__Created_By}" for="idOutputCreatedby" />
+						<apex:OutputField value="{!objTemplate.Owner.FirstName}" id="idOutputCreatedBy"/>
+					</apex:pageBlockSectionItem>
+				</apex:pageBlockSection>
+			</apex:pageBlock>
+			<apex:pageBlock id="idpgBlockDetails" Title="{!$Label.ksc__Template_Details}">
+				<apex:pageBlockButtons id="pgbtnDetails">
+					<apex:commandButton action="{!createVersion}" title="{!$Label.ksc__Create_New_Version}" Value="{!$Label.ksc__Create_Version}" immediate="false" id="cbCreateVersion" disabled="{!bdisableFlag}" rendered="{!brenderActiveButtonFlag}" />			
+					<apex:commandButton action="{!activateTemplate}" title="{!$Label.ksc__Template_Availability}" Value="{!$Label.ksc__Deactivate}"  immediate="false" id="cbDeactivate" disabled="{!bdisableFlag}" rendered="{!brenderActiveButtonFlag}" />			
+					<apex:commandButton action="{!activateTemplate}" title="{!$Label.ksc__Template_Activation}" Value="{!$Label.ksc__Activate}" immediate="false" id="cbActivate" disabled="{!NOT(bdisableFlag)}" rendered="{!brenderActiveButtonFlag}" />
+					<apex:commandButton action="{!cancel}" title="{!$Label.ksc__Button_cancel}" value="{!$Label.ksc__Button_cancel}" immediate="true" status="counterStatus"  id="cbCancel"/>
+					<apex:commandButton action="{!deleteTemplate}" title="Delete" value="{!$Label.ksc__Button_Delete}" immediate="true" status="counterStatus"  id="cbDelete11" rendered="{!bdeleteButtonFlag}" />
+					
+				</apex:pageBlockButtons>
+				<apex:pageBlockSection title="{!$Label.ksc__View_Template_Details}" id="idpbSection_2" columns="1">
+					<apex:pageBlockTable value="{!lstTempItemDetails}" var="item"  id="idPgbTable">
+						<apex:column headerValue="{!$Label.ksc__ScoreCard_TH_Points}" value="{!item.Ksc__Get_Points__c}" id="idCol2" />
+						<apex:column headerValue="{!$Label.ksc__ScoreCard_TH_DesGive}" value="{!item.Ksc__Give_Description__c}" id="idCol3"/>
+						<apex:column headerValue="{!$Label.ksc__ScoreCard_TH_DesGet}" value="{!item.Ksc__Get_Description__c}" id="idCol4"/>
+					</apex:pageBlockTable>
+				</apex:pageBlockSection>		
+			</apex:pageBlock>
+		</apex:form>
+</apex:page>

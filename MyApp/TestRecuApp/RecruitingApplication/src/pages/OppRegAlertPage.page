@@ -1,0 +1,17 @@
+<apex:page standardController="Lead" tabStyle="Lead" >
+<apex:form >
+<!--  <apex:inputHidden value="{!Lead.Lead_Category__c}" id="LeadCategoryId"/>  -->
+<apex:inputHidden value="{!Lead.Status}" id="StatusId"/>
+</apex:form>
+<script language="javascript">
+ // var LdCategory;
+  var LdStatus;
+     // LdCategory=document.getElementById('j_id0:j_id1:LeadCategoryId').value;
+      LdStatus=document.getElementById('j_id0:j_id1:StatusId').value;    
+   window.onload = function() {
+    if( LdStatus =='Closed - Converted'){
+           alert(‘Lead Saved but not Submitted!');
+           }
+   }
+</script>
+</apex:page>

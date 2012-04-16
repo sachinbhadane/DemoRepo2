@@ -1,0 +1,255 @@
+!SESSION 2012-03-19 16:03:27.018 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 16:04:22.627
+!MESSAGE  WARN [2012-03-19 16:04:22,627] (IntroEditorInput.java:loadDocument:130) - org.xml.sax.SAXParseException: The entity name must immediately follow the '&' in the entity reference.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 16:06:56.157
+!MESSAGE  WARN [2012-03-19 16:06:56,156] (IntroEditorInput.java:loadDocument:130) - org.xml.sax.SAXParseException: Element type "allpres.length" must be followed by either attribute specifications, ">" or "/>".
+
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-19 16:41:31.948
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.install" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-19 16:41:31.948
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.uninstall" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:02:19.166
+!MESSAGE  WARN [2012-03-19 17:02:19,163] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:02:19.169
+!MESSAGE  WARN [2012-03-19 17:02:19,168] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:02:19.171
+!MESSAGE  WARN [2012-03-19 17:02:19,171] (MetadataFactory.java:clearCache:134) - Clearing the following cached metadata stubs
+
+!SESSION 2012-03-19 17:12:19.561 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:12:57.612
+!MESSAGE  WARN [2012-03-19 17:12:57,612] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'classes/dynamicpicklist.cls-meta.xml' from project - associated component's file resource is null.  Assuming new.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:13:06.188
+!MESSAGE  WARN [2012-03-19 17:13:06,187] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:13:06.194
+!MESSAGE  WARN [2012-03-19 17:13:06,190] (ComponentController.java:run:370) - Unable to update cache with new component Apex Class - cache is not found
+
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-19 17:13:06.934
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.install" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-19 17:13:06.937
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.uninstall" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:13:33.785
+!MESSAGE  WARN [2012-03-19 17:13:33,784] (ProjectService.java:handleDeployResult:1909) - Save failed!
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:13:33.796
+!MESSAGE  WARN [2012-03-19 17:13:33,795] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:14:19.526
+!MESSAGE  WARN [2012-03-19 17:14:19,524] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'pages/CountryState.page-meta.xml' from project - associated component's file resource is null.  Assuming new.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:14:23.370
+!MESSAGE  WARN [2012-03-19 17:14:23,370] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:14:23.376
+!MESSAGE  WARN [2012-03-19 17:14:23,375] (ComponentController.java:run:370) - Unable to update cache with new component Visualforce Page - cache is not found
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:14:39.982
+!MESSAGE  WARN [2012-03-19 17:14:39,982] (ProjectService.java:handleDeployResult:1909) - Save failed!
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:14:39.998
+!MESSAGE  WARN [2012-03-19 17:14:39,998] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:17:33.393
+!MESSAGE  WARN [2012-03-19 17:17:33,393] (ProjectService.java:handleDeployResult:1909) - Save failed!
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:17:33.393
+!MESSAGE  WARN [2012-03-19 17:17:33,393] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:20:19.372
+!MESSAGE  WARN [2012-03-19 17:20:19,371] (ProjectService.java:handleDeployResult:1909) - Save failed!
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:20:19.377
+!MESSAGE  WARN [2012-03-19 17:20:19,376] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:20:42.129
+!MESSAGE  WARN [2012-03-19 17:20:42,129] (ProjectService.java:handleDeployResult:1909) - Save failed!
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 17:20:42.134
+!MESSAGE  WARN [2012-03-19 17:20:42,133] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 21:04:13.504
+!MESSAGE  WARN [2012-03-19 21:04:13,504] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 21:04:13.514
+!MESSAGE  WARN [2012-03-19 21:04:13,514] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-19 21:04:13.514
+!MESSAGE  WARN [2012-03-19 21:04:13,514] (MetadataFactory.java:clearCache:134) - Clearing the following cached metadata stubs
+
+!SESSION 2012-03-21 15:46:48.747 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-21 15:47:10.181
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.install" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-21 15:47:10.208
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.uninstall" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-21 17:13:34.521
+!MESSAGE  WARN [2012-03-21 17:13:34,503] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-21 17:13:34.524
+!MESSAGE  WARN [2012-03-21 17:13:34,524] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-21 17:13:34.527
+!MESSAGE  WARN [2012-03-21 17:13:34,526] (MetadataFactory.java:clearCache:131) - No cached metadata stubs
+
+!SESSION 2012-03-30 10:32:41.790 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-30 10:33:01.988
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.install" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2012-03-30 10:33:02.011
+!MESSAGE Attempt to redefine project facet action "jpt.jpa.uninstall" in plugin org.eclipse.jpt.jpa.core.
+
+!ENTRY org.eclipse.epp.usagedata.recording 1 0 2012-03-30 10:33:22.503
+!MESSAGE Usage data uploaded to http://udc.eclipse.org/upload.php in 2889 milliseconds.
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:30.484
+!MESSAGE  WARN [2012-03-30 10:33:30,474] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:32.348
+!MESSAGE  WARN [2012-03-30 10:33:32,348] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:47.710
+!MESSAGE  WARN [2012-03-30 10:33:47,709] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'BusinessProcess': Unable to get bean for id 'BusinessProcess'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:47.714
+!MESSAGE  WARN [2012-03-30 10:33:47,713] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'CustomField': Unable to get bean for id 'CustomField'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:47.718
+!MESSAGE  WARN [2012-03-30 10:33:47,717] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'CustomLabel': Unable to get bean for id 'CustomLabel'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.130
+!MESSAGE  WARN [2012-03-30 10:33:49,129] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'ListView': Unable to get bean for id 'ListView'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.133
+!MESSAGE  WARN [2012-03-30 10:33:49,132] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'NamedFilter': Unable to get bean for id 'NamedFilter'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.137
+!MESSAGE  WARN [2012-03-30 10:33:49,136] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'RecordType': Unable to get bean for id 'RecordType'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.619
+!MESSAGE  WARN [2012-03-30 10:33:49,618] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'SharingReason': Unable to get bean for id 'SharingReason'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.625
+!MESSAGE  WARN [2012-03-30 10:33:49,624] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'ValidationRule': Unable to get bean for id 'ValidationRule'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.629
+!MESSAGE  WARN [2012-03-30 10:33:49,628] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WebLink': Unable to get bean for id 'WebLink'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.633
+!MESSAGE  WARN [2012-03-30 10:33:49,632] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowAlert': Unable to get bean for id 'WorkflowAlert'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.637
+!MESSAGE  WARN [2012-03-30 10:33:49,636] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowFieldUpdate': Unable to get bean for id 'WorkflowFieldUpdate'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.640
+!MESSAGE  WARN [2012-03-30 10:33:49,639] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowOutboundMessage': Unable to get bean for id 'WorkflowOutboundMessage'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.643
+!MESSAGE  WARN [2012-03-30 10:33:49,642] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowRule': Unable to get bean for id 'WorkflowRule'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:33:49.646
+!MESSAGE  WARN [2012-03-30 10:33:49,646] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowTask': Unable to get bean for id 'WorkflowTask'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:36:27.244
+!MESSAGE  WARN [2012-03-30 10:36:27,242] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'pages/NewAccountContactPage.page-meta.xml' from project - associated component's file resource is null.  Assuming new.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 10:38:03.602
+!MESSAGE  WARN [2012-03-30 10:38:03,601] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'classes/NewAccountContactPageController.cls-meta.xml' from project - associated component's file resource is null.  Assuming new.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 11:03:19.827
+!MESSAGE  WARN [2012-03-30 11:03:19,825] (ProjectService.java:handleDeployResult:1909) - Save failed!
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 11:03:19.837
+!MESSAGE  WARN [2012-03-30 11:03:19,836] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 11:03:20.178
+!MESSAGE  WARN [2012-03-30 11:03:20,178] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 11:03:20.182
+!MESSAGE  WARN [2012-03-30 11:03:20,181] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+
+
+!ENTRY com.salesforce.ide.core 2 0 2012-03-30 11:03:20.185
+!MESSAGE  WARN [2012-03-30 11:03:20,185] (MetadataFactory.java:clearCache:134) - Clearing the following cached metadata stubs
+

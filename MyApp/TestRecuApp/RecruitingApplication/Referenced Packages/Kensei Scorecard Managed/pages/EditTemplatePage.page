@@ -1,0 +1,47 @@
+<apex:page standardController="Ksc__TemplateMaster__c"  extensions="Ksc.EditTemplateController" sidebar="false" tabStyle="Ksc__TemplateMaster__c" id="EditTemplatePage" >
+    <apex:form id="idForm">
+    <apex:pageMessages id="idPgMessages"/>
+    <apex:pageBlock id="idpgBlock2" Title="{!$Label.ksc__Template_Label}">
+            <apex:pageBlockSection title="{!$Label.ksc__View_Template}" id="idpbSection2">
+                <apex:pageBlockSectionItem id="idpbSectionItem_3">                      
+                                <apex:outputLabel value="{!$Label.ksc__Template_Name}" for="idOutputName" id="oplabel1" />
+                                <apex:OutputField value="{!objTemplate.Name}" id="idOutputName"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="idpbSectionItem_4">
+                        <apex:outputLabel value="{!$Label.ksc__Status_Label}" for="idOutputStatus" id="oplabel2" />
+                        <apex:OutputField value="{!objTemplate.Ksc__TStatus__c}" id="idOutputStatus"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Version" for="idVersion" id="oplabel3" > </apex:outputLabel>
+                     <apex:outputText value="{0,number,#.##}" id="optxt1" >
+                            <apex:param value="{!IF(ISNULL(returnURL),objTemplate.Ksc__Version__c+1,objTemplate.Ksc__Version__c)}" />
+                            </apex:outputText>
+                </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            <apex:pageBlock id="idpgBlockDetails2" Title="{!$Label.ksc__Template_Details}" >
+                <apex:pageBlockButtons id="idpgbuttons">
+                    <apex:commandButton action="{!addMore}" title="{!$Label.ksc__Add_More_Title}" value="{!$Label.ksc__Button_Add_More}"  rerender="idPgMessages,idPgbTable,idpgBlock2" status="counterStatus"  immediate="false" id="cbAddmoreClm" />
+                    <apex:commandButton action="{!remove}" title="{!$Label.ksc__Remove_Template}" value="{!$Label.ksc__Button_Remove}" rerender="idpbSection_2,idPgMessages" status="counterStatus" id="cbRemoveClm"  />
+                    <apex:commandButton action="{!save}" title="{!$Label.ksc__Save_Template}" Value="{!$Label.ksc__Button_Save}" immediate="false" id="cbSave" />
+                    <apex:commandButton action="{!Cancel}" value="{!$Label.ksc__Button_cancel}" immediate="true" status="counterStatus"  id="cbCancel2"/>
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection title="{!$Label.ksc__View_Template_Details}" id="idpbSection_2" columns="1" >
+                    <apex:pageBlockTable value="{!lstTemplateItems}" var="item"  id="idPgbTable" width="100%" >
+                        <apex:column id="idColflag">
+                        <apex:inputCheckbox value="{!item.flag}" id="idCheckflag" />
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.ksc__ScoreCard_TH_Points}" id="idCol2" >
+                        <apex:inputField value="{!item.detailsItems.Ksc__Get_Points__c}" style="width:40px" id="ipfield1" />
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.ksc__ScoreCard_TH_DesGive}" id="idCol3"> 
+                        <apex:inputText value="{!item.detailsItems.Ksc__Give_Description__c}" size="70" id="ipfield2" />
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.ksc__ScoreCard_TH_DesGet}" id="idCol4">
+                        <apex:inputText value="{!item.detailsItems.Ksc__Get_Description__c}" size="70" id="iptxt3" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>        
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="Position__c">
+
+<apex:form >
+<apex:pageBlock title="My Content">
+<apex:pageBlockButtons >
+<apex:commandButton action="{!save}" value="Save"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="My Content Section" columns="2">
+<apex:inputField value="{!Position__c.Status__c}"/>
+<apex:inputField value="{!Position__c.Location__c}"/>
+<!-- <apex:inputField value="{!account.type}"/> -->
+<!-- <apex:inputField value="{!account.accountNumber}"/> -->
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

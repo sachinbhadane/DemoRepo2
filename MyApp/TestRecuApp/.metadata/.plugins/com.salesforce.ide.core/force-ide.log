@@ -1,0 +1,50 @@
+ WARN [2012-03-19 16:04:22,627] (IntroEditorInput.java:loadDocument:130) - org.xml.sax.SAXParseException: The entity name must immediately follow the '&' in the entity reference.
+ WARN [2012-03-19 16:06:56,156] (IntroEditorInput.java:loadDocument:130) - org.xml.sax.SAXParseException: Element type "allpres.length" must be followed by either attribute specifications, ">" or "/>".
+ WARN [2012-03-19 17:02:19,163] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+ WARN [2012-03-19 17:02:19,168] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+ WARN [2012-03-19 17:02:19,171] (MetadataFactory.java:clearCache:134) - Clearing the following cached metadata stubs
+ WARN [2012-03-19 17:12:57,612] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'classes/dynamicpicklist.cls-meta.xml' from project - associated component's file resource is null.  Assuming new.
+ WARN [2012-03-19 17:13:06,187] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+ WARN [2012-03-19 17:13:06,190] (ComponentController.java:run:370) - Unable to update cache with new component Apex Class - cache is not found
+ WARN [2012-03-19 17:13:33,784] (ProjectService.java:handleDeployResult:1909) - Save failed!
+ WARN [2012-03-19 17:13:33,795] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+ WARN [2012-03-19 17:14:19,524] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'pages/CountryState.page-meta.xml' from project - associated component's file resource is null.  Assuming new.
+ WARN [2012-03-19 17:14:23,370] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+ WARN [2012-03-19 17:14:23,375] (ComponentController.java:run:370) - Unable to update cache with new component Visualforce Page - cache is not found
+ WARN [2012-03-19 17:14:39,982] (ProjectService.java:handleDeployResult:1909) - Save failed!
+ WARN [2012-03-19 17:14:39,998] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+ WARN [2012-03-19 17:17:33,393] (ProjectService.java:handleDeployResult:1909) - Save failed!
+ WARN [2012-03-19 17:17:33,393] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+ WARN [2012-03-19 17:20:19,371] (ProjectService.java:handleDeployResult:1909) - Save failed!
+ WARN [2012-03-19 17:20:19,376] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+ WARN [2012-03-19 17:20:42,129] (ProjectService.java:handleDeployResult:1909) - Save failed!
+ WARN [2012-03-19 17:20:42,133] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+ WARN [2012-03-19 21:04:13,504] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+ WARN [2012-03-19 21:04:13,514] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+ WARN [2012-03-19 21:04:13,514] (MetadataFactory.java:clearCache:134) - Clearing the following cached metadata stubs
+ WARN [2012-03-21 17:13:34,503] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+ WARN [2012-03-21 17:13:34,524] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+ WARN [2012-03-21 17:13:34,526] (MetadataFactory.java:clearCache:131) - No cached metadata stubs
+ WARN [2012-03-30 10:33:30,474] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+ WARN [2012-03-30 10:33:32,348] (Utils.java:loadDocument:790) - Unable to load document: D:\SalesForce Practice\Recruiting App\.metadata\.plugins\org.eclipse.core.resources\.projects\RecruitingApplication\com.salesforce.ide.core\packageCache.xml (The system cannot find the file specified)
+ WARN [2012-03-30 10:33:47,709] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'BusinessProcess': Unable to get bean for id 'BusinessProcess'
+ WARN [2012-03-30 10:33:47,713] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'CustomField': Unable to get bean for id 'CustomField'
+ WARN [2012-03-30 10:33:47,717] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'CustomLabel': Unable to get bean for id 'CustomLabel'
+ WARN [2012-03-30 10:33:49,129] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'ListView': Unable to get bean for id 'ListView'
+ WARN [2012-03-30 10:33:49,132] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'NamedFilter': Unable to get bean for id 'NamedFilter'
+ WARN [2012-03-30 10:33:49,136] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'RecordType': Unable to get bean for id 'RecordType'
+ WARN [2012-03-30 10:33:49,618] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'SharingReason': Unable to get bean for id 'SharingReason'
+ WARN [2012-03-30 10:33:49,624] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'ValidationRule': Unable to get bean for id 'ValidationRule'
+ WARN [2012-03-30 10:33:49,628] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WebLink': Unable to get bean for id 'WebLink'
+ WARN [2012-03-30 10:33:49,632] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowAlert': Unable to get bean for id 'WorkflowAlert'
+ WARN [2012-03-30 10:33:49,636] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowFieldUpdate': Unable to get bean for id 'WorkflowFieldUpdate'
+ WARN [2012-03-30 10:33:49,639] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowOutboundMessage': Unable to get bean for id 'WorkflowOutboundMessage'
+ WARN [2012-03-30 10:33:49,642] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowRule': Unable to get bean for id 'WorkflowRule'
+ WARN [2012-03-30 10:33:49,646] (ComponentFactory.java:getComponentBean:1142) - Unable to get component for id 'WorkflowTask': Unable to get bean for id 'WorkflowTask'
+ WARN [2012-03-30 10:36:27,242] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'pages/NewAccountContactPage.page-meta.xml' from project - associated component's file resource is null.  Assuming new.
+ WARN [2012-03-30 10:38:03,601] (ComponentFactory.java:getCompositeComponentFromComponent:1090) - Unable to load existing 'classes/NewAccountContactPageController.cls-meta.xml' from project - associated component's file resource is null.  Assuming new.
+ WARN [2012-03-30 11:03:19,825] (ProjectService.java:handleDeployResult:1909) - Save failed!
+ WARN [2012-03-30 11:03:19,836] (ProjectService.java:handleRetrieveResult:2083) - Nothing to save to project - retrieve result is empty
+ WARN [2012-03-30 11:03:20,178] (ConnectionFactory.java:clearCache:212) - Clearing the following cached connections
+ WARN [2012-03-30 11:03:20,181] (DescribeObjectRegistry.java:clearCache:657) - Clearing cached describes
+ WARN [2012-03-30 11:03:20,185] (MetadataFactory.java:clearCache:134) - Clearing the following cached metadata stubs

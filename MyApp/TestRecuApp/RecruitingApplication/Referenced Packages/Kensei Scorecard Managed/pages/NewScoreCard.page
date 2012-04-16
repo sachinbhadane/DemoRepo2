@@ -1,0 +1,141 @@
+<apex:page standardcontroller="Ksc__ScrdMaster__c" id="NewScoreCard" sidebar="false" action="{!pageAction}" tabStyle="Ksc__ScrdMaster__c" extensions="Ksc.NewScorecardController" standardStylesheets="false">
+	<apex:includeScript value="{!$Resource.Ksc__jsScoreCard}"/>
+<apex:form id="idForm">
+	<apex:pageMessages id="pgMsg" />
+	
+	<apex:actionStatus id="status"/>
+	<apex:outPutPanel id="idOpPanelNew">
+		<apex:pageBlock title="{!$Label.ksc__Score_Card_Label}" id="idPageBlock" mode="edit">
+			<apex:pageBlockButtons id="idpgbButtons">
+			<apex:commandButton value="  Go!  " action="{!fillTemplate}" id="idLoadButton" rendered="{!NOT(showSaveButton)}"/>
+				<apex:commandButton value="Save" action="{!saveScoreCard}" id="idSaveButton" rendered="{!showSaveButton}" />
+				<apex:commandButton immediate="true" value="{!$Label.ksc__Button_cancel}" action="{!cancel}" id="idCancelButton"  />
+				<apex:commandButton immediate="true" value="Print View" onclick="popupPrintWindow('PrintScoreCard?id={!idScoreMaster}'); return false;" id="idPrintButton" rendered="{!bEdit}" />
+			</apex:pageBlockButtons>
+			
+			<apex:pageBlockSection title="{!$Label.ksc__ScoreCard_GeneralInformation}" columns="2" id="pgbSecGeneral">
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_1">
+					<apex:outputLabel value="{!$Label.ksc__ScoreCard_Name}" for="idIpName" id="idOpLabelName"/>
+					<apex:inputField value="{!objScoreCardMaster.Name}" id="idIpName" required="true" /> 
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_2"  rendered="{!bEdit}">
+					<apex:outputLabel value="{!$ObjectType.Opportunity.Label}" for="idopFieldOpp" id="idOpLabelOpp"/>
+					<apex:outputField value="{!objScoreCardMaster.Ksc__Opportunity__c}" id="idopFieldOpp"/>
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_29"  rendered="{!(bCreate && NOT(bEditOpportunity))}">
+					<apex:outputLabel value="{!$ObjectType.Opportunity.Label}" for="idopFieldOpp29" id="idOpLabelOpp29"/>
+					<apex:outputField value="{!objScoreCardMaster.Ksc__Opportunity__c}" id="idopFieldOpp29"/>
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_33" rendered="{!(bCreate && bEditOpportunity)}">
+					<apex:outputLabel value="{!$ObjectType.Opportunity.Label}" for="idipFieldOpportunity" id="idOpLabelOpportunity"/>
+					<apex:InputField value="{!objScoreCardMaster.Ksc__Opportunity__c}" id="idipFieldOpportunity" required="true">
+					</apex:InputField> 
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_21" rendered="{!bEdit}">
+					<apex:outputLabel value="{!$Label.ksc__Template_Label}" for="idopFieldOpp" id="idOpLabelTemp1"/>
+					<apex:outputLabel value="{!objScoreCardMaster.TemplateMaster__r.Name}" id="idopFieldOppLabel" />  
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_211" rendered="{!showSaveButton && bCreate}">
+					<apex:outputLabel value="{!$Label.ksc__Template_Label}" for="idopFieldOpp" id="idOpLabelTemp11"/>
+					<apex:outputLabel value="{!objScoreCardMaster.Ksc__TemplateMaster__c}" id="idopFieldOppLabel1" />  
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_23" rendered="{!Not(showSaveButton)}" >
+					<apex:outputLabel value="{!$Label.ksc__Template_Label}" for="idipFieldTempalte" id="idOpLabelTemp"/>
+					<apex:inputText id="txtTemplate" styleClass="txtTemplate" value="{!objScoreCardMaster.Ksc__TemplateMaster__c}" required="true" >
+ 							<apex:image id="theImage" Title="Score Card Templat Lookup Window" onclick="popupWindow(this.id);" onmouseout="changeClassRemove(this.id);" onmouseover="changeClass(this.id);"  styleClass="lookupIcon" value="/s.gif" style="float:right;margin-right:40%" />
+        			</apex:inputText>
+    			</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_22" rendered="{!bEdit}">
+					<apex:outputLabel value="{!$Label.ksc__Status_Label}" for="idopFieldOpp" id="idScStatus"/>	
+					<apex:outputLabel value="{!objScoreCardMaster.Ksc__Status__c}" id="idStatus" />  
+				</apex:pageBlockSectionItem>
+				
+			 <apex:pageBlockSectionItem dataStyle="width:10px;" id="pgbSecItem_02" rendered="{!bEdit}">
+					<apex:outputLabel value="{!$Label.ksc__Template_Version}" for="idopFieldTmpVer" id="idTmpVersion"/>
+					<apex:OutputField value="{!objScoreCardMaster.Ksc__Version__c}" id="idVersion"/>	
+				</apex:pageBlockSectionItem>
+				
+				
+				
+			</apex:pageBlockSection>
+			<!-- Page Block for Score Card Table -->
+			<apex:pageBlockSection title="{!$Label.ksc__ScoreCard_Scoring}" id="topblock" columns="1" rendered="{!showPageBlockTable}" >
+					
+					 <apex:pageBlockTable value="{!lstChildTemplateDetails}" id="pgbTable_1" var="varTemDetails">
+					 	<apex:column id="idColPoints" headerValue="{!$Label.ksc__ScoreCard_TH_Points}">
+							<apex:OutputField value="{!varTemDetails.objTemplateDetails.Ksc__Get_Points__c}" id="idPoints" />
+						</apex:column>
+						
+						 <apex:column id="idColDesc" headerValue="{!$Label.ksc__ScoreCard_TH_DesGive}">
+								<apex:OutputField value="{!varTemDetails.objTemplateDetails.Ksc__Give_Description__c}" id="idGiveDesc" />
+						</apex:column>
+						
+						<apex:column id="idColGave" headerValue="{!$Label.ksc__ScoreCard_TH_Gave}">
+							<apex:inputCheckbox onclick="total(this.id,'idGave','idPoints','idTotal','idFreq','totalScoreGives');" value="{!varTemDetails.bGave}" id="idGave" />
+						</apex:column>
+						
+						<apex:column id="idColFreq" headerValue="{!$Label.ksc__ScoreCard_Th_NumofTimes}">
+							<apex:inputText value="{!varTemDetails.intNumTime}" onchange="NoOfTime(this.id,'idTotal','idPoints','totalScoreGives','idGave','idFreq');" id="idFreq"  style="width:30px;"/>
+						</apex:column>
+						
+						<apex:column id="idColTotal" headerValue="{!$Label.ksc__ScoreCard_TH_Total}">
+							<apex:inputText value="{!varTemDetails.intGiveTotal}" onkeydown="return false;" onkeypress="return cantEdit(event);" id="idTotal" style="width:30px;"/>
+						</apex:column>
+						
+						<apex:column id="blank" headerValue="">
+							<div style="width:120px;">&nbsp;</div>
+						</apex:column>
+						
+						<apex:column id="idColGetPts" headerValue="{!$Label.ksc__ScoreCard_TH_Points}">
+							<apex:OutputField value="{!varTemDetails.objTemplateDetails.Ksc__Get_Points__c}" id="idGetPoint" />
+						</apex:column>
+						
+						<apex:column id="idColGetDesc" headerValue="{!$Label.ksc__ScoreCard_TH_DesGet}">
+							<apex:OutputField value="{!varTemDetails.objTemplateDetails.Ksc__Get_Description__c}" id="idGetDesc" />
+						</apex:column>
+						
+						<apex:column id="idColAskNot" headerValue="{!$Label.ksc__ScoreCard_TH_Awaited}">
+								<apex:inputCheckbox value="{!varTemDetails.bAskNotGot}" onClick="gotValue(this.id,'idAskNotGave','idDenied','idGot','idGotTotal','idGetPoint','totalScoreGet')" id="idAskNotGave" />
+						</apex:column>
+						
+						<apex:column id="idColDenied" headerValue="{!$Label.ksc__ScoreCard_TH_Denied}" >
+							<apex:inputCheckbox value="{!varTemDetails.bAskedDenied}" onClick="gotValue(this.id,'idAskNotGave','idDenied','idGot','idGotTotal','idGetPoint','totalScoreGet')" id="idDenied"  />
+						</apex:column>
+						
+						<apex:column id="idColGot" headerValue="{!$Label.ksc__ScoreCare_TH_Got}" >
+							<apex:inputCheckbox value="{!varTemDetails.bGot}" onClick="gotValue(this.id,'idAskNotGave','idDenied','idGot','idGotTotal','idGetPoint','totalScoreGet')" id="idGot" />
+						</apex:column>
+						
+						<apex:column id="idColGotTotal" headerValue="{!$Label.ksc__ScoreCard_TH_Total}">
+							<apex:inputText value="{!varTemDetails.intGotTotal}" onkeydown="return false;" onkeypress="return cantEdit(this.id);" id="idGotTotal"  style="width:30px;"/>
+						</apex:column>
+				</apex:pageBlockTable>
+		</apex:pageBlockSection>
+				<apex:pageBlockSection title="Total Score" columns="3" rendered="{!showPageBlockTable}">
+					<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_TotalScoreGives">
+						<apex:outputLabel value="{!$Label.ksc__ScoreCard_TH_TotalGives}" id="lblTotalScoreGives"/>
+						  <apex:inputText id="idTotalScoreGives" value="{!objScoreCardMaster.Ksc__Total_Give_Score__c}" onkeydown="return false;" onkeypress="return cantEdit(this.id);" styleClass="totalScoreGives"  style="width:30px;"/> <!-- onkeypress -->
+					</apex:pageBlockSectionItem>
+					
+					<apex:pageBlockSectionItem dataStyle="width:20px;" id="pgbSecItem_TotalScoreGets">
+						<apex:outputLabel value="{!$Label.ksc__ScoreCardd_TH_TotalGet}" id="lblTotalScoreGets"/> 
+							<apex:inputText id="idTotalScoreGets" value="{!objScoreCardMaster.Ksc__Total_Get_Score__c}" onkeydown="return false;"  onkeypress="return cantEdit(this.id);" styleClass="totalScoreGet"  style="width:30px;"/> <!-- onkeypress -->
+							
+					</apex:pageBlockSectionItem>
+				</apex:pageBlockSection>
+			</apex:pageBlock>
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" />
+			<script>CheckifNull();</script>
+	</apex:outPutPanel>
+		
+</apex:form>
+	<apex:relatedList list="ProcessSteps" ></apex:relatedList>
+</apex:page>

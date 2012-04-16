@@ -1,0 +1,30 @@
+<apex:page controller="Ksc.LookupScoreCardTemplateController" id="Page" tabstyle="Contact" showHeader="false">
+ 
+<apex:sectionHeader title="Score Card Template"  subtitle="Custom Lookup" />
+ <script type="text/javascript">
+ 	function selectTemplate(linkId)
+ 	{
+ 		window.opener.document.getElementById('NewScoreCard:idForm:idPageBlock:pgbSecGeneral:pgbSecItem_23:txtTemplate').value=document.getElementById(linkId).innerHTML;
+ 		//window.opener.document.getElementByClassName('txtTemplate').value = document.getElementById(linkId).innerHTML;
+ 		window.close();
+ 	}
+ 	
+ </script>
+ 	<apex:includeScript value="{!$Resource.Ksc__jsScoreCard}"/>
+  <apex:form id="myForm">
+  <div style="overflow:scroll;height:450px">
+    <apex:PageBlock id="PageBlock">    
+      <apex:pageBlockSection columns="1" title="Custom Lookup">
+      	
+        	<apex:pageBlockTable value="{!lstTemplateMaster}" var="Temp" id="idTemplate" >
+        		<apex:column headerValue="Name">
+							<apex:OutputLink onclick="selectTemplate(this.id); return false;" id="Link">{!Temp.Name}</apex:OutputLink>
+						</apex:column>
+        	</apex:pageBlockTable>
+        	
+      </apex:pageBlockSection>
+    </apex:PageBlock>
+    </div>
+  </apex:form>
+ 
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page standardcontroller="Filter__c" extensions="FilterController" sidebar="false" tabStyle="Filter__c" id="pgFilterid" >
+  <apex:form id="idForm">
+ 	 <apex:pageMessages id="idPgMsg"/>
+  		<apex:pageBlock id="idpgBlock1" Title="Objects">
+  			<apex:pageBlockSection title="Select Object" id="idpgSection1" >
+  				<apex:pageBlockSectionItem id="idpbSectionItem1">						
+								<apex:outputLabel value="Select Object" for="idOplbl1" />
+								<apex:InputField value="{!Filter__c.Object_Name__c}" id="idipField1" />
+				</apex:pageBlockSectionItem>
+				</apex:pageBlockSection>
+				<apex:pageBlock id="idpgBlock2" >
+				    <apex:pageBlockButtons id="pgbuttons">
+						<apex:commandButton action="{!save}" value="Save" status="counterStatus" id="cbSave" />
+						<apex:commandButton action="{!cancel}" value="Cancel" status="counterStatus"  id="cbCancel" />
+					</apex:pageBlockButtons>
+				<apex:pageBlockSection title="Object Fields" id="idpgSection2">
+					<apex:pageBlockTable value="{!lstFilterClass}" var="item"  id="idPgbTable" columns="3">
+						<apex:column headerValue="Select" id="idColflag">
+						<apex:inputCheckbox value="{!item.isSelect}" id="idCheckflag"/>
+						</apex:column>
+					 	<apex:column headerValue="Field Label" id="idCol2" >
+						<apex:outputText value="{!item.objFilter.Field_Name__c}" id="idopField2" />   
+						</apex:column>
+						<apex:column headerValue="Field Name" id="idCol3"> 
+						<apex:outputText value="{!item.objFilter.API_Field_Name__c}" id="idopField3" />  
+						</apex:column>   
+				    </apex:pageBlockTable>
+			    </apex:pageBlockSection>
+			    </apex:pageBlock>
+		</apex:pageBlock>
+	</apex:form>  
+</apex:page>
