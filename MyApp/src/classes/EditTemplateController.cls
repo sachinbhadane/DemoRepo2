@@ -1,36 +1,68 @@
 public with sharing class EditTemplateController
+
 {
-	//Member Variables
+	
+//Member Variables
+
 	private Integer childCount;
+
+
+
+
+
+
+
+
+
 	public String returnURL;
-	//Properties
+	
+//Properties
 	private String strId{set;get;}
+
 	public Boolean disableFlag{set;get;}
-	public TemplateMaster__c objTemplate {set;get;}
 	
+public TemplateMaster__c objTemplate {set;get;}
+	
+
 	public List<TemplateItems> lstTemplateItems{set;get;}
-	private TemplateMaster__c objNewTemplateVersion{set;get;}
-	private  List<TemplateDetail__c> lstTempItemDetails{set;get;}
 	
+private TemplateMaster__c objNewTemplateVersion{set;get;}
+	
+private  List<TemplateDetail__c> lstTempItemDetails{set;get;}
+	
+
 	public List<TemplateItems> oldLstTemplateItems{set;get;}
-	private List<TemplateItems> lstSelectedItems{set;get;}
-	public List<TemplateItems> lstDeleteItems{set;get;}
-	public List<TemplateDetail__c> lstTempItemDetailsDelete{set;get;}
 	
+private List<TemplateItems> lstSelectedItems{set;get;}
+
+	public List<TemplateItems> lstDeleteItems{set;get;}
+	
+public List<TemplateDetail__c> lstTempItemDetailsDelete{set;get;}
+	
+
 	
 	//Constructor
-	public EditTemplateController(ApexPages.StandardController stdController)
+	
+public EditTemplateController(ApexPages.StandardController stdController)
+
 	{
 		returnURL = ApexPages.currentPage().getParameters().get('retURL');
-		strId = ApexPages.currentPage().getParameters().get('id');
-		lstTemplateItems = new List<TemplateItems>();
-		this.objTemplate = (TemplateMaster__c)stdController.getRecord();
+	
+	strId = ApexPages.currentPage().getParameters().get('id');
+		
+lstTemplateItems = new List<TemplateItems>();
+		
+this.objTemplate = (TemplateMaster__c)stdController.getRecord();
+
 		
 		objTemplate  = [Select t.TStatus__c, t.TName__c,t.Version__c,t.Name,t.Id From TemplateMaster__c t where Id =:strId];		
-		if(objTemplate.TStatus__c == Label.TemplateStatus_Active)
-		{
+	
+	if(objTemplate.TStatus__c == Label.TemplateStatus_Active)
+		
+{
 			disableFlag=false;
 		}
+
 		else
 		{
 			disableFlag=true;
